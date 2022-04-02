@@ -1,6 +1,21 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+// const nextConfig = {
+//   reactStrictMode: true,
+// }
+// module.exports = nextConfig
+
+const path = require('path')
+
+module.exports = {
+  trailingSlash: true,
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')]
+  }
 }
 
-module.exports = nextConfig
+// const withMDX = require('@next/mdx')({
+//   extension: /\.mdx?$/
+// });
+
+// module.exports = withMDX({
+//   pageExtensions: ['js', 'jsx', 'mdx']
+// });
