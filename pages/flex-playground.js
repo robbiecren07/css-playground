@@ -19,8 +19,8 @@ export default function FlexPlayground({ sidebarProps }) {
   return (
     <main className={styles.container}>
 
-      <FlexSidebar sidebarProps={sidebarProps} onClick={() => setAddFlexItem([...addFlexItem, currentIndex++])} handleOnChange={(value) => setFlexItemStyles(value)} />
-      <FlexContainer addFlexItem={addFlexItem} setAddFlexItem={setAddFlexItem} addFlexItemStyles={addFlexItemStyles} />
+      {/* <FlexSidebar sidebarProps={sidebarProps} onClick={() => setAddFlexItem([...addFlexItem, currentIndex++])} handleOnChange={(value) => setFlexItemStyles(value)} />
+      <FlexContainer addFlexItem={addFlexItem} setAddFlexItem={setAddFlexItem} addFlexItemStyles={addFlexItemStyles} /> */}
 
     </main>
   )
