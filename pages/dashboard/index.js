@@ -3,7 +3,7 @@ import { useAuth } from '@/lib/auth'
 import fetcher from '@/utils/fetcher'
 import DashboardShell from '@/components/DashboardShell'
 
-import styles from '../styles/Dashboard.module.scss'
+// import styles from '../../styles/Dashboard.module.scss'
 
 const Dashboard = () => {
   const { user } = useAuth()
@@ -34,7 +34,7 @@ const Dashboard = () => {
   
 }
 
-export default function DashboardPage({ globalProps }) {
+export default function DashboardPage() {
     
   return (
     <Dashboard />
