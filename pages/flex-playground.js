@@ -9,14 +9,6 @@ import styles from '../styles/Flex.module.scss'
 let currentIndex = 0 
 
 export default function FlexPlayground({ sidebarProps }) {
-
-  const router = useRouter()
-  // If the page is not yet generated, this will be displayed
-	// initially until getStaticProps() finishes running
-	if ( router.isFallback ) {
-		return <div>Loading...</div>
-  }
-
   // Parent container for the onCick event which starts at flex-sidebarcontainer
   // add gets padded to the FlexContainer with addFlexItem using the usaState
   const [addFlexItem, setAddFlexItem] = useState([])

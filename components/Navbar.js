@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Image from 'next/image'
+import logoImg from '../public/css-playground-logo-400.png'
 import { useAuth } from "@/lib/auth"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/pro-regular-svg-icons'
@@ -12,7 +14,12 @@ const LoginIcon = () => {
     return (
       <Link href="/account" passHref>
         <a className={styles.avatar} title="View Account">
-          <img width="36" height="36" src={user?.photoUrl} alt="account avatar" />
+          <Image
+            src={user?.photoUrl}
+            width="36"
+            height="36"
+            alt="account avatar"
+          />
         </a>
       </Link>
     )
@@ -38,7 +45,12 @@ const Navbar = () => {
           <div className={styles.container}>
             <Link href="/" passHref>
               <a className={styles.nav_logo}>
-                <img width="400" height="67" src="/css-playground-logo-400.png" alt="A CSS Flex and Grid sandbox playgound" />
+                <Image
+                  src={logoImg}
+                  width="400"
+                  height="67"
+                  alt="A CSS Flex and Grid sandbox playgound"
+                />
               </a>
             </Link>
             <div className={styles.nav_links}>

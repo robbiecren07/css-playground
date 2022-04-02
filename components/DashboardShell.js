@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image'
 import { useAuth } from '@/lib/auth';
 
 import styles from '../styles/Dashboard.module.scss'
@@ -24,7 +25,12 @@ const DashboardShell = ({ children }) => {
       <div>
         <Link href="/account" passHref>
           <a>
-            <img src={user?.photoUrl} />
+            <Image
+              src={user?.photoUrl}
+              width="96"
+              height="96"
+              alt="profile avatar"
+            />
           </a>
         </Link>
       </div>
