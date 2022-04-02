@@ -13,11 +13,6 @@ import '../styles/globals.scss'
 
 const App = ({ Component, pageProps }) => {
     
-  // const { global } = pageProps
-  // if (global == null) {
-  //   return <ErrorPage statusCode={404} />
-  // }
-
   return (
     <>
       <AuthProvider>
