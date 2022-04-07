@@ -4,39 +4,17 @@ import FlexItem from './flex-item'
 
 import styles from '../../styles/Flex.module.scss'
 
-const DisplayFlexItem = ({ flexItems, removeFlexItem, selectedItem, addFGStyle }) => {
+const DisplayFlexItem = ({ flexItems, removeFlexItem, selectedItem }) => {
   return flexItems.map((item) => (
     <>
-      <FlexItem key={item} itemCount={item} trashClick={() => { removeFlexItem(item) }} selectedItem={selectedItem} addFGStyle={addFGStyle} />
+      <FlexItem key={item} itemCount={item} trashClick={() => { removeFlexItem(item) }} selectedItem={selectedItem} />
     </>
   ))
 }
 
-const FlexContainer = ({ addFlexItem, setAddFlexItem, selectedItem, addFDStyle, addFWStyle, addJCStyle, addAIStyle, addACStyle, addFGStyle }) => {
+const FlexContainer = ({ addFlexItem, setAddFlexItem, selectedItem }) => {
 
   const flexCtx = useContext(FlexSidebarContext)
-
-  // const [isaddFDStyle, setaddFDStyle] = useState(addFDStyle)
-  // const [isaddFWStyle, setaddFWStyle] = useState(addFWStyle)
-  // const [isaddJCStyle, setaddJCStyle] = useState(addJCStyle)
-  // const [isaddAIStyle, setaddAIStyle] = useState(addAIStyle)
-  // const [isaddACStyle, setaddACStyle] = useState(addACStyle)
-  
-  // useEffect(() => {
-  //   setaddFDStyle(addFDStyle.label)
-  // }, [addFDStyle.label])
-  // useEffect(() => {
-  //   setaddFWStyle(addFWStyle.label)
-  // }, [addFWStyle.label])
-  // useEffect(() => {
-  //   setaddJCStyle(addJCStyle.label)
-  // }, [addJCStyle.label])
-  // useEffect(() => {
-  //   setaddACStyle(addACStyle.label)
-  // }, [addACStyle.label])
-  // useEffect(() => {
-  //   setaddAIStyle(addAIStyle.label)
-  // }, [addAIStyle.label])
 
   return (
     <section
@@ -51,7 +29,6 @@ const FlexContainer = ({ addFlexItem, setAddFlexItem, selectedItem, addFDStyle, 
           const newAddFlexItem = addFlexItem.filter((currentItem) => currentItem !== item)
           setAddFlexItem(newAddFlexItem)
         }}
-        addFGStyle={addFGStyle}
       />
       
     </section>

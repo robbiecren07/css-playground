@@ -5,7 +5,7 @@ import { faTrashCanXmark } from '@fortawesome/pro-solid-svg-icons'
 
 import styles from '../../styles/Flex.module.scss'
 
-const FlexItem = ({ itemCount, selectedItem, trashClick, addFGStyle }) => {
+const FlexItem = ({ itemCount, selectedItem, trashClick }) => {
   
   const flexCtx = useContext(FlexSidebarContext)
 

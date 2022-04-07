@@ -114,3 +114,25 @@
     background-color: var(--c-blue) !important;
   }
 }
+
+input, select {
+  position: relative;
+  width: 100%;
+  min-height: 4.6rem;
+  line-height: 1.5;
+  padding: .75rem;
+  color: #808080;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  outline: 0 !important;
+  transition: all 100ms;
+  cursor: default;
+  &:hover {
+    border-color: #b3b3b3;
+  }
+  &:active, &:focus-visible {
+    border-color: var(--c-blue);
+    box-shadow: 0 0 0 1px var(--c-blue);
+  }
+}

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 const FlexSidebarContext = createContext({
   FD_value: 'row',
@@ -12,16 +12,18 @@ const FlexSidebarContext = createContext({
   AC_value: 'flex-start',
   fetchACValue: function (value) {},
   FG_value: 0,
-  fetchFGValue: function (value) {},
+  fetchFGValue: function (value) { },
+  AS_value: 'auto',
+  fetchASValue: function (value) {},
 })
 
 export const FlexSidebarContextProvider = ({ children }) => {
   {/* sidebar container states */ }
-  const [isFDValue, setFDValue] = useState('')
-  const [isFWValue, setFWValue] = useState('')
-  const [isJCValue, setJCValue] = useState('')
-  const [isAIValue, setAIValue] = useState('')
-  const [isACValue, setACValue] = useState('')
+  const [isFDValue, setFDValue] = useState('row')
+  const [isFWValue, setFWValue] = useState('nowrap')
+  const [isJCValue, setJCValue] = useState('flex-start')
+  const [isAIValue, setAIValue] = useState('flex-start')
+  const [isACValue, setACValue] = useState('flex-start')
 
   const setFDValues = (value) => { setFDValue(value) }
   const setFWValues = (value) => { setFWValue(value) }
@@ -31,8 +33,10 @@ export const FlexSidebarContextProvider = ({ children }) => {
   
   {/* sidebar items states */}
   const [isFGValue, setFGValue] = useState(0)
+  const [isASValue, setASValue] = useState('auto')
 
   const setFGValues = (value) => { setFGValue(value) }
+  const setASValues = (value) => { setASValue(value) }
 
   const context = {
     FD_value: isFDValue,
@@ -47,6 +51,8 @@ export const FlexSidebarContextProvider = ({ children }) => {
     fetchACValue: setACValues,
     FG_value: isFGValue,
     fetchFGValue: setFGValues,
+    AS_value: isASValue,
+    fetchASValue: setASValues,
   }
 
   return (
