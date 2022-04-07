@@ -6,7 +6,7 @@ export default function Home() {
   
   return (
     <main className="main">
-
+      
       <div className="container">
         <h1 className="screen-reader-text">The CSS Playground</h1>
 

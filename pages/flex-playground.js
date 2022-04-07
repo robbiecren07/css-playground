@@ -1,6 +1,6 @@
+//import React from 'react';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import Layout from '@/components/Layout';
+import { FlexSidebarContextProvider } from 'context/flexSidebar';
 import FlexSidebar from '@/components/flex/flex-sidebar';
 import FlexContainer from '@/components/flex/flex-container';
 
@@ -8,21 +8,55 @@ import styles from '../styles/Flex.module.scss'
 
 let currentIndex = 0 
 
-export default function FlexPlayground({ sidebarProps }) {
-  // Parent container for the onCick event which starts at flex-sidebarcontainer
-  // add gets padded to the FlexContainer with addFlexItem using the usaState
+export default function FlexPlayground() {
+
+  // useState for adding flex item
   const [addFlexItem, setAddFlexItem] = useState([])
-  const [addFlexItemStyles, setFlexItemStyles] = useState('')
 
-  //console.log(addFlexItem)
-  
+  // useState for selected flex item
+  const [isSelectedItem, setSelectedItem] = useState(null)
+
+  // useState for getting select field's onChange
+  const [addFDStyle, setFDStyle] = useState('')
+  const [addFWStyle, setFWStyle] = useState('')
+  const [addJCStyle, setJCStyle] = useState('')
+  const [addAIStyle, setAIStyle] = useState('')
+  const [addACStyle, setACStyle] = useState('')
+
+  const [addFGStyle, setFGStyle] = useState(0)
+
+  //console.log(addFGStyle)
+
   return (
-    <main className={styles.container}>
+    <FlexSidebarContextProvider>
+      <main className={styles.container}>
 
-      {/* <FlexSidebar sidebarProps={sidebarProps} onClick={() => setAddFlexItem([...addFlexItem, currentIndex++])} handleOnChange={(value) => setFlexItemStyles(value)} />
-      <FlexContainer addFlexItem={addFlexItem} setAddFlexItem={setAddFlexItem} addFlexItemStyles={addFlexItemStyles} /> */}
+      <FlexSidebar
+        onClick={() => setAddFlexItem([...addFlexItem, currentIndex++])}
+        handleFD={(value) => setFDStyle(value)}
+        handleFW={(value) => setFWStyle(value)}
+        handleJC={(value) => setJCStyle(value)}
+        handleAI={(value) => setAIStyle(value)}
+        handleAC={(value) => setACStyle(value)}
+        handleFG={(value) => setFGStyle(value)}
+        addFlexItem={addFlexItem}
+        selectedItem={isSelectedItem}
+      />
 
-    </main>
+      <FlexContainer
+        addFlexItem={addFlexItem}
+        setAddFlexItem={setAddFlexItem}
+        selectedItem={() => setSelectedItem()}
+        addFDStyle={addFDStyle}
+        addFWStyle={addFWStyle}
+        addJCStyle={addJCStyle}
+        addAIStyle={addAIStyle}
+        addACStyle={addACStyle}
+        addFGStyle={addFGStyle}
+      />
+
+      </main>
+    </FlexSidebarContextProvider>
   )
 
 }

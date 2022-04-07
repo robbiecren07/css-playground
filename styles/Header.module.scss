@@ -29,10 +29,28 @@
         gap: 16px;
         padding-right: 8rem;
         .nav_link {
+          position: relative;
           color: var(--c-black);
           font-weight: 600;
+          &:after {
+            content: '';
+            width: 50%;
+            height: 2px;
+            position: absolute;
+            bottom: -.5rem;
+            left: 25%;
+            background-color: var(--c-white);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s ease-out, background-color 0.4s ease-in-out;
+          }
           &:hover {
             color: var(--c-blue);
+            &:after {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+              background-color: var(--c-blue);
+            }
           }
         }
         .acct {
@@ -56,10 +74,9 @@
         .avatar {
           display: flex;
           align-items: center;
-          width: 3.6rem;
-          height: 3.6rem;
           padding-left: 3rem;
           img {
+            width: 3.6rem;
             border-radius: 99rem;
             object-fit: cover;
           }

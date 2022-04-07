@@ -1,11 +1,15 @@
 import Link from "next/link"
-import Image from 'next/image'
+import Image from "./Image"
+import { useRouter } from "next/router";
 import logoImg from '../public/css-playground-logo-400.png'
 import { useAuth } from "@/lib/auth"
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/pro-regular-svg-icons'
 
 import styles from '../styles/Header.module.scss'
+
 
 const LoginIcon = () => {
   const { user } = useAuth();
@@ -14,12 +18,12 @@ const LoginIcon = () => {
     return (
       <Link href="/account" passHref>
         <a className={styles.avatar} title="View Account">
-          <Image
+          {<Image
             src={user?.photoUrl}
             width="36"
             height="36"
             alt="account avatar"
-          />
+          /> || <Skeleton circle={true} height={36} width={36} />}
         </a>
       </Link>
     )
@@ -37,6 +41,8 @@ const LoginIcon = () => {
 
 const Navbar = () => {
 
+  const router = useRouter();
+  
   return (
     <>
       <header className={styles.head}>
@@ -54,14 +60,14 @@ const Navbar = () => {
               </a>
             </Link>
             <div className={styles.nav_links}>
-              <Link href="/flex-playgound" passHref>
-                <a className={styles.nav_link} title="Flex Playground">
+              <Link href="/flex-playground" passHref>
+                <a className={router.pathname == "/flex-playground" ? `${styles.nav_link} active` : `${styles.nav_link}`} target="_self" title="Flex Playground">
                   Flex Playground
                 </a>
               </Link>
-              <Link href="/grid-playgound" passHref>
-                <a className={styles.nav_link} title="Grid Playground">
-                  Flex Playground
+              <Link href="/grid-playground" passHref>
+                <a className={router.pathname == "/grid-playground" ? `${styles.nav_link} active` : `${styles.nav_link}`} target="_self" title="Grid Playground">
+                  Grid Playground
                 </a>
               </Link>
 

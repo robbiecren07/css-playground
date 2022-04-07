@@ -1,36 +1,27 @@
-//import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from "react";
+import FlexSidebarContext from "context/flexSidebar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCanXmark } from '@fortawesome/pro-solid-svg-icons'
+
 import styles from '../../styles/Flex.module.scss'
 
-const FlexItem = ({ itemCount, trashClick }) => {
+const FlexItem = ({ itemCount, selectedItem, trashClick, addFGStyle }) => {
   
-  // const [isaddFlexItem, setaddFlexItem] = useState(addFlexItem)
-  
-  // useEffect(() => {
-  //   setaddFlexItem(addFlexItem)
-  //   console.log(isaddFlexItem)
-  // }, [addFlexItem])
-
-  // const clearState = () => {
-  //   setaddFlexItem(false)
-  // }
+  const flexCtx = useContext(FlexSidebarContext)
 
   return (
-    // isaddFlexItem ?
-      <div className={styles.flex_item}>
-        <div className={styles.flex_item_wrap}>
-          <div className={styles.flex_item_inner}>
-            Item: {itemCount + 1}
-          </div>
-          <button className={styles.edit}>Edit</button>
+    <div className={styles.flex_item} style={{ flexGrow: flexCtx.FG_value }}>
+      <div className={styles.flex_item_wrap}>
+        <div className={styles.flex_item_inner}>
+          Item: {itemCount + 1}
         </div>
-      
-        <button className={styles.trash} onClick={trashClick}>
-          <FontAwesomeIcon icon={faTrashCanXmark} />
-        </button>
+        <button className={styles.edit} onClick={selectedItem}>Edit</button>
       </div>
-    // : "empty"
+    
+      <button className={styles.trash} onClick={trashClick}>
+        <FontAwesomeIcon icon={faTrashCanXmark} />
+      </button>
+    </div>
   )
 
 }

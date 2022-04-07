@@ -14,6 +14,8 @@
 }
 
 .btn {
+  width: 100%;
+  max-width: 40rem;
   display: block;
   font-weight: 700;
   line-height: 1.2;
@@ -22,7 +24,16 @@
   color: var(--c-white);
   background-image: linear-gradient(to bottom right, var(--c-purple) , var(--c-blue));
   border-radius: 1rem;
+  margin-bottom: 2rem;
+  @media (min-width: 1024px) {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
   &:hover {
+    color: var(--c-white);
     background-image: linear-gradient(to bottom left, var(--c-purple) , var(--c-blue));
   }
   &.btn_lg {
@@ -77,5 +88,29 @@
     svg {
       color: var(--c-blue);
     }
+  }
+}
+
+.button {
+  display: block;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  color: var(--c-white);
+  background-image: linear-gradient(to bottom right, var(--c-purple) , var(--c-blue));
+  border-radius: 1rem;
+  @media (min-width: 1024px) {
+    padding: 1.5rem 2.5rem;
+  }
+  &:hover {
+    background-image: linear-gradient(to bottom left, var(--c-purple) , var(--c-blue));
+  }
+}
+
+.active {
+  &:after {
+    transform: scaleX(1) !important;
+    background-color: var(--c-blue) !important;
   }
 }
