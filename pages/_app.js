@@ -1,7 +1,10 @@
 import Head from "next/head"
-import ErrorPage from "next/error"
-import Layout from "@/components/Layout"
 import { AuthProvider } from "@/lib/auth"
+import ErrorPage from "next/error"
+import { ChakraProvider } from "@chakra-ui/provider"
+import theme from "@/styles/theme"
+import Layout from "@/components/Layout"
+
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
@@ -22,9 +25,11 @@ const App = ({ Component, pageProps }) => {
           <meta name="description" content="A learning playground for CSS and all things web!" />
         </Head>
 
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ChakraProvider resetCSS theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ChakraProvider>
 
       </AuthProvider>
     </>

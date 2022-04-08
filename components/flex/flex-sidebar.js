@@ -3,6 +3,7 @@ import { useState } from 'react';
 import FlexSidebarContainer from './flex-sidebarcontainer'
 import FlexSidebarItems from './flex-sidebaritems'
 import styles from '../../styles/Flex.module.scss'
+import { Button, ButtonGroup } from '@chakra-ui/react';
 
 const FlexSidebar = ({ onClick, handleFD, handleFW, handleJC, handleAI, handleAC, addFlexItem, selectedItem, handleFG }) => {
 
@@ -22,14 +23,14 @@ const FlexSidebar = ({ onClick, handleFD, handleFW, handleJC, handleAI, handleAC
   return (
     <aside className={styles.left_sidebar}>
 
-      <nav className={styles.sidebar_nav} role="group">
-        <button type="button" className={`btn_sb btn_sb-left ${container ? "active" : ""}`} onClick={containerDisplay}>
+      <ButtonGroup className={styles.sidebar_nav} spacing="1" size="xl">
+        <Button className={`${container ? "active" : ""}`} onClick={containerDisplay} variant="sb-btn">
           Container
-        </button>
-        <button type="button" className={`btn_sb btn_sb-right ${items ? "active" : ""}`} onClick={itemsDisplay}>
+        </Button>
+        <Button className={`${items ? "active" : ""}`} onClick={itemsDisplay} variant="sb-btn">
           Items
-        </button>
-      </nav>
+        </Button>
+      </ButtonGroup>
 
       <section className={styles.wrap}>
         {container === true && <FlexSidebarContainer

@@ -1,22 +1,48 @@
-import Link from "next/link"
+import NextLink from "next/link"
 import Image from "./Image"
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
 import logoImg from '../public/css-playground-logo-400.png'
 import { useAuth } from "@/lib/auth"
+import { useColorMode, Button, Link, Flex } from "@chakra-ui/react"
+import { SunIcon, MoonIcon } from '@chakra-ui/icons'
 import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser } from '@fortawesome/pro-regular-svg-icons'
 
+import 'react-loading-skeleton/dist/skeleton.css'
 import styles from '../styles/Header.module.scss'
 
+const DarkModeIcon = () => {
+  const { colorMode, toggleColorMode } = useColorMode()
+  
+  if (colorMode === 'light') {
+    return (
+      <Button onClick={toggleColorMode} variant="dark-mode" w={30} h={30}>
+        <MoonIcon w={10} h={10} color="#080808" onClick={toggleColorMode} />
+      </Button>
+    )
+  }
+
+  if (colorMode === 'dark') {
+    return (
+      <Button onClick={toggleColorMode} variant="dark-mode" w={30} h={30}>
+        <SunIcon w={10} h={10} color="#fff" onClick={toggleColorMode} />
+      </Button>
+    )
+  }
+
+  return (
+    <Button onClick={toggleColorMode} variant="dark-mode" w={30} h={30}>
+      <MoonIcon w={10} h={10} color="#080808" />
+    </Button>
+  )
+  
+}
 
 const LoginIcon = () => {
   const { user } = useAuth();
 
   if (user) {
     return (
-      <Link href="/account" passHref>
+      <NextLink href="/account" passHref>
         <a className={styles.avatar} title="View Account">
           {<Image
             src={user?.photoUrl}
@@ -25,16 +51,16 @@ const LoginIcon = () => {
             alt="account avatar"
           /> || <Skeleton circle={true} height={36} width={36} />}
         </a>
-      </Link>
+      </NextLink>
     )
   }
 
   return (
-    <Link href="/login" passHref>
-      <a className={styles.acct} title="Log in to Account">
-        <span>Log In</span>
-      </a>
-    </Link>
+    <NextLink href="/login" passHref>
+      <Button href="/login" target="_self" title="Log in to Account" variant="menu-button">
+        Log In
+      </Button>
+    </NextLink>
   )
 
 }
@@ -49,7 +75,7 @@ const Navbar = () => {
         <nav className={styles.nav_bar}>
 
           <div className={styles.container}>
-            <Link href="/" passHref>
+            <NextLink href="/" passHref>
               <a className={styles.nav_logo}>
                 <Image
                   src={logoImg}
@@ -58,21 +84,23 @@ const Navbar = () => {
                   alt="A CSS Flex and Grid sandbox playgound"
                 />
               </a>
-            </Link>
-            <div className={styles.nav_links}>
-              <Link href="/flex-playground" passHref>
-                <a className={router.pathname == "/flex-playground" ? `${styles.nav_link} active` : `${styles.nav_link}`} target="_self" title="Flex Playground">
+            </NextLink>
+            <Flex alignItems="center" gap="2rem" pr="8rem">
+              <NextLink href="/flex-playground" passHref>
+                <Link variant="menu-link" className={router.pathname == "/flex-playground" ? 'nav_link active' : 'nav_link'} target="_self">
                   Flex Playground
-                </a>
-              </Link>
-              <Link href="/grid-playground" passHref>
-                <a className={router.pathname == "/grid-playground" ? `${styles.nav_link} active` : `${styles.nav_link}`} target="_self" title="Grid Playground">
+                </Link>
+              </NextLink>
+              <NextLink href="/grid-playground" passHref>
+                <Link variant="menu-link" className={router.pathname == "/grid-playground" ? 'nav_link active' : 'nav_link'} target="_self" mr="2rem">
                   Grid Playground
-                </a>
-              </Link>
+                </Link>
+              </NextLink>
 
               <LoginIcon />
-            </div>
+              
+              <DarkModeIcon />
+            </Flex>
           </div>
 
         </nav>
