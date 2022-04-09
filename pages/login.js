@@ -4,10 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons'
 
 import styles from '../styles/Dashboard.module.scss'
+import { GitHubIcon, GoogleIcon } from '@/styles/theme';
+import { Button, useColorModeValue } from '@chakra-ui/react';
 
 export default function Login() {
 
   const auth = useAuth()
+  const color = useColorModeValue('#080808', '#fff')
 
   return (
     <main className={styles.main}>
@@ -17,17 +20,18 @@ export default function Login() {
           <h1>Log Into My Account</h1>
 
           <div className={styles.btn}>
-            <button className={styles.btn_inner} onClick={(e) => auth.signinWithGitHub('/dashboard')}>
-              <FontAwesomeIcon icon={faGithub} size="2x" />
-              <span>Sign in with GitHub</span>
-            </button>
+            <Button onClick={(e) => auth.signinWithGitHub('/dashboard')} variant="outline-blue">
+              {/* <FontAwesomeIcon icon={faGithub} size="2x" /> */}
+              <GitHubIcon w="30px" h="30px" mr="16px" fill={color} />
+              Sign in with GitHub
+            </Button>
           </div>
 
           <div className={styles.btn}>
-            <button className={styles.btn_inner} onClick={(e) => auth.signinWithGoogle('/dashboard')}>
-              <img src="/google-icon.svg" width="32" height="32" />
-              <span>Sign in with Google</span>
-            </button>
+            <Button onClick={(e) => auth.signinWithGoogle('/dashboard')} variant="outline-blue">
+              <GoogleIcon w="28px" h="28px" mr="16px" color={color} />
+              Sign in with Google
+            </Button>
           </div>
 
         </div>

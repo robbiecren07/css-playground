@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import FlexSidebarContext from "context/flexSidebar";
 //import Link from "next/link"
-import { Link, Select } from "@chakra-ui/react";
+import { Button, Link, Select } from "@chakra-ui/react";
 import FlexSidebarTooltip from "./flex-sidebartooltip"
 import { fdOptions, fwOptions, jcOptions, aiOptions, acOptions} from '@/utils/select-options'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,9 +19,9 @@ const FlexSidebarContainer = ({ onClick }) => {
   return (
     <>
       <p className={styles.warning}>Edit properties of the flex container here. Click an item to the right to edit its properties.</p>
-      <button type="button" className="btn" onClick={onClick}>
+      <Button onClick={onClick} variant="solid" w="100%" h="48px" fontSize="18px">
         Add Flex Item
-      </button>
+      </Button>
         
       <form className={styles.form}>
 
@@ -39,8 +39,8 @@ const FlexSidebarContainer = ({ onClick }) => {
             name="flex-direction"
             value={flexCtx.FD_value}
             size="lg"
-            fontSize="1.6rem"
-            h="4rem"
+            fontSize="1rem"
+            h="40px"
             mt="4px"
             onChange={(e) => flexCtx.fetchFDValue(e.target.value)}
           >
@@ -64,8 +64,8 @@ const FlexSidebarContainer = ({ onClick }) => {
             name="flex-wrap"
             value={flexCtx.FW_value}
             size="lg"
-            fontSize="1.6rem"
-            h="4rem"
+            fontSize="1rem"
+            h="40px"
             mt="4px"
             onChange={(e) => flexCtx.fetchFWValue(e.target.value)}
           >
@@ -89,8 +89,8 @@ const FlexSidebarContainer = ({ onClick }) => {
             name="justify-content"
             value={flexCtx.JC_value}
             size="lg"
-            fontSize="1.6rem"
-            h="4rem"
+            fontSize="1rem"
+            h="40px"
             mt="4px"
             onChange={(e) => flexCtx.fetchJCValue(e.target.value)}
           >
@@ -114,8 +114,8 @@ const FlexSidebarContainer = ({ onClick }) => {
             name="align-items"
             value={flexCtx.AI_value}
             size="lg"
-            fontSize="1.6rem"
-            h="4rem"
+            fontSize="1rem"
+            h="40px"
             mt="4px"
             onChange={(e) => flexCtx.fetchAIValue(e.target.value)}
           >
@@ -139,8 +139,8 @@ const FlexSidebarContainer = ({ onClick }) => {
             name="align-content"
             value={flexCtx.AC_value}
             size="lg"
-            fontSize="1.6rem"
-            h="4rem"
+            fontSize="1rem"
+            h="40px"
             mt="4px"
             onChange={(e) => flexCtx.fetchACValue(e.target.value)}
           >

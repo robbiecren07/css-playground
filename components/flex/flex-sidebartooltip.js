@@ -25,8 +25,8 @@ const FlexSidebarTooltip = ({ tooltipText }) => {
 
   return (
     <div className="flex flex-wrap">
-      <Tooltip label={tooltipText} placement="right" fontSize={14} padding="1.6rem">
-        <InfoIcon w={6} h={6} cursor="pointer" />
+      <Tooltip label={tooltipText} placement="right" fontSize="14px" padding="1rem">
+        <InfoIcon w={4} h={4} cursor="pointer" />
       </Tooltip>
       {/* <button className={styles.fa_btn} type="button" onMouseEnter={openTooltip} onMouseLeave={closeTooltip} ref={btnRef}>
         <FontAwesomeIcon icon={faCircleQuestion} />

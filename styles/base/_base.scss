@@ -37,10 +37,10 @@
 //   border-collapse: collapse;
 // }
 
-html {
-  /* 62.5% of 16px base font size is 10px */
-  font-size: 62.5%;
-}
+// html {
+//   /* 62.5% of 16px base font size is 10px */
+//   font-size: 62.5%;
+// }
 
 html, body {
   height: 100%;
@@ -67,16 +67,14 @@ img {
   display: block;
 }
 
-button {
+select {
   cursor: pointer;
+}
+button {
   &.active {
     color: #357DF8;
     background-color: #e5e7eb;
   }
-}
-
-label {
-  font-weight: 700;
 }
 
 #__next {
@@ -105,14 +103,14 @@ label {
   
 }
 
-a {
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
+// a {
+//   text-decoration: none;
+//   transition: all 0.3s ease-in-out;
 
-  &:hover {
-    text-decoration: none;
-  }
-}
+//   &:hover {
+//     text-decoration: none;
+//   }
+// }
 
 .nav_link {
   position: relative;
@@ -121,7 +119,7 @@ a {
     width: 50%;
     height: 2px;
     position: absolute;
-    bottom: -.5rem;
+    bottom: -5px;
     left: 25%;
     background-color: var(--c-white);
     transform: scaleX(0);

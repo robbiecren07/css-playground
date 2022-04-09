@@ -15,7 +15,7 @@
   .nav_bar {
     width: 100%;
     height: 100%;
-    padding-bottom: .5rem;
+    padding-bottom: 5px;
     .container {
       display: flex;
       align-items: center;
@@ -27,7 +27,7 @@
         display: flex;
         align-items: center;
         gap: 16px;
-        padding-right: 8rem;
+        padding-right: 80px;
         .nav_link {
           position: relative;
           color: var(--c-black);
@@ -37,7 +37,7 @@
             width: 50%;
             height: 2px;
             position: absolute;
-            bottom: -.5rem;
+            bottom: -5px;
             left: 25%;
             background-color: var(--c-white);
             transform: scaleX(0);
@@ -58,14 +58,14 @@
           font-weight: 700;
           line-height: 1;
           text-align: center;
-          padding: 1rem 1.5rem;
-          margin-left: 1rem;
+          padding: 10px 15px;
+          margin-left: 10px;
           color: var(--c-white);
           background-image: linear-gradient(to bottom right, var(--c-purple) , var(--c-blue));
-          border-radius: 1rem;
+          border-radius: 10px;
           @media (min-width: 1024px) {
-            padding: 1.5rem 2.5rem;
-            margin-left: 2rem;
+            padding: 15px 25px;
+            margin-left: 20px;
           }
           &:hover {
             background-image: linear-gradient(to bottom left, var(--c-purple) , var(--c-blue));
@@ -74,17 +74,17 @@
         .avatar {
           display: flex;
           align-items: center;
-          padding-left: 3rem;
+          padding-left: 30px;
           img {
-            width: 3.6rem;
-            border-radius: 99rem;
+            width: 36px;
+            border-radius: 9999px;
             object-fit: cover;
           }
         }
       }
       .btn {
         display: block;
-        padding: .2rem;
+        padding: 2px;
         background-image: linear-gradient(to bottom right, var(--c-purple), var(--c-blue));
         border-radius: 1rem;
         .btn_inner {

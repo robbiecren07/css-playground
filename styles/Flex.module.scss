@@ -15,50 +15,50 @@
   flex-direction: column;
   border-bottom: 1px solid var(--c-white-b);
   @media (min-width: 1024px) {
-    max-width: 26rem;
+    max-width: 260px;
     border-right: 1px solid var(--c-white-b);
     border-bottom: 0;
   }
   @media (min-width: 1366px) {
-    max-width: 34rem;
+    max-width: 340px;
   }
   .sidebar_nav {
     display: inline-flex;
-    margin: 1.5rem;
+    margin: 1rem;
     &:focus-visible {
       border-color: var(--c-blue);
       box-shadow: 0 0 0 1px var(--c-blue);
     }
   }
   .wrap {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
     .warning {
-      padding: 1.5rem;
+      padding: 1rem;
       color: var(--c-blue);
       background-color: var(--c-blue-l);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     button {
       width: 100%;
     }
   }
   .form {
-    margin-top: 2rem;
+    margin-top: 20px;
     .form_item {
-      margin-bottom: 2rem;
+      margin-bottom: 20px;
     }
     .form_label_wrap {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.6rem;
+      gap: 6px;
     }
     .form_item_wrap {
       width: 100%;
       > div {
         input {
-          min-height: 3.4rem !important;
-          height: 3.4rem !important;
+          min-height: 34px !important;
+          height: 34px !important;
         }
       }
     }
@@ -66,7 +66,7 @@
 }
 .fa_btn {
   background-color: rgba(0, 0, 0, 0);
-  padding: 0 0.5rem 0 0;
+  padding: 0 0 5px 0;
 }
 .tooltip_show {
   width: 26rem;
@@ -84,15 +84,15 @@
   height: 100%;
   display: flex;
   flex-grow: 1;
-  gap: 1rem;
-  padding: 1.4rem;
+  gap: 10px;
+  padding: 10px;
   background-color: #f8fafc;
 }
 
 .flex_item {
   display: inline-flex;
   background-color: var(--c-white);
-  border-radius: .8rem;
+  border-radius: 8px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   .flex_item_wrap {
     width: 100%;
@@ -104,7 +104,7 @@
       display: flex;
       flex: 1 1 0;
       align-items: center;
-      padding: 2.5rem 3rem 2.5rem 2rem;
+      padding: 25px 30px 25px 20px;
     }
     .edit {
       position: absolute;
@@ -115,8 +115,8 @@
       background-color: rgba(225, 239, 254, 0.95);
       color: var(--c-blue);
       font-weight: 600;
-      border-top-left-radius: .8rem;
-      border-bottom-left-radius: .8rem;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
       &:hover {
@@ -125,11 +125,11 @@
     }
   }
   .trash {
-    padding: 0 1rem;
+    padding: 0 10px;
     background-color: var(--c-white);
     border-left: 1px solid #f4f4f4;
-    border-top-right-radius: .8rem;
-    border-bottom-right-radius: .8rem;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
     transition: all 0.3s ease-in-out;
     svg {
       color: var(--c-gray-1);

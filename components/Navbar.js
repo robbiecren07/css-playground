@@ -15,23 +15,23 @@ const DarkModeIcon = () => {
   
   if (colorMode === 'light') {
     return (
-      <Button onClick={toggleColorMode} variant="dark-mode" w={30} h={30}>
-        <MoonIcon w={10} h={10} color="#080808" onClick={toggleColorMode} />
+      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
+        <MoonIcon w={6} h={6} color="#080808" onClick={toggleColorMode} />
       </Button>
     )
   }
 
   if (colorMode === 'dark') {
     return (
-      <Button onClick={toggleColorMode} variant="dark-mode" w={30} h={30}>
-        <SunIcon w={10} h={10} color="#fff" onClick={toggleColorMode} />
+      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
+        <SunIcon w={6} h={6} color="#fff" onClick={toggleColorMode} />
       </Button>
     )
   }
 
   return (
-    <Button onClick={toggleColorMode} variant="dark-mode" w={30} h={30}>
-      <MoonIcon w={10} h={10} color="#080808" />
+    <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
+      <MoonIcon w={6} h={6} color="#080808" />
     </Button>
   )
   
@@ -85,7 +85,7 @@ const Navbar = () => {
                 />
               </a>
             </NextLink>
-            <Flex alignItems="center" gap="2rem" pr="8rem">
+            <Flex alignItems="center" gap="20px" pr="80px">
               <NextLink href="/flex-playground" passHref>
                 <Link variant="menu-link" className={router.pathname == "/flex-playground" ? 'nav_link active' : 'nav_link'} target="_self">
                   Flex Playground
