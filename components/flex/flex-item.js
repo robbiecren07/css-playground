@@ -10,7 +10,7 @@ const FlexItem = ({ itemCount, selectedItem, trashClick }) => {
   const flexCtx = useContext(FlexSidebarContext)
 
   return (
-    <div className={styles.flex_item} style={{ flexGrow: flexCtx.FG_value }}>
+    <div className={styles.flex_item} style={{ flexGrow: flexCtx.FG_value, flexShrink: flexCtx.FS_value, flexBasis: flexCtx.FB_value, alignSelf: flexCtx.AS_value, order: flexCtx.OR_value }}>
       <div className={styles.flex_item_wrap}>
         <div className={styles.flex_item_inner}>
           Item: {itemCount + 1}

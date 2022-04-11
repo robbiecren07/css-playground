@@ -2,19 +2,19 @@ import { useContext } from "react";
 import FlexSidebarContext from "context/flexSidebar";
 //import Link from "next/link"
 import { Button, Link, Select } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import FlexSidebarTooltip from "./flex-sidebartooltip"
 import { fdOptions, fwOptions, jcOptions, aiOptions, acOptions} from '@/utils/select-options'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from '@fortawesome/pro-solid-svg-icons'
 
 import styles from '../../styles/Flex.module.scss'
-import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const FlexSidebarContainer = ({ onClick }) => {
 
   const flexCtx = useContext(FlexSidebarContext)
 
-  console.log(flexCtx.FD_value)
+  //console.log(flexCtx.FD_value)
 
   return (
     <>

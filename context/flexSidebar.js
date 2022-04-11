@@ -13,8 +13,14 @@ const FlexSidebarContext = createContext({
   fetchACValue: function (value) {},
   FG_value: 0,
   fetchFGValue: function (value) { },
+  FS_value: 0,
+  fetchFSValue: function (value) { },
+  FB_value: 'auto',
+  fetchFBValue: function (value) { },
   AS_value: 'auto',
-  fetchASValue: function (value) {},
+  fetchASValue: function (value) { },
+  OR_value: 0,
+  fetchORValue: function (value) {},
 })
 
 export const FlexSidebarContextProvider = ({ children }) => {
@@ -33,10 +39,16 @@ export const FlexSidebarContextProvider = ({ children }) => {
   
   {/* sidebar items states */}
   const [isFGValue, setFGValue] = useState(0)
+  const [isFSValue, setFSValue] = useState(0)
+  const [isFBValue, setFBValue] = useState('auto')
   const [isASValue, setASValue] = useState('auto')
+  const [isORValue, setORValue] = useState(0)
 
   const setFGValues = (value) => { setFGValue(value) }
+  const setFSValues = (value) => { setFSValue(value) }
+  const setFBValues = (value) => { setFBValue(value) }
   const setASValues = (value) => { setASValue(value) }
+  const setORValues = (value) => { setORValue(value) }
 
   const context = {
     FD_value: isFDValue,
@@ -51,8 +63,14 @@ export const FlexSidebarContextProvider = ({ children }) => {
     fetchACValue: setACValues,
     FG_value: isFGValue,
     fetchFGValue: setFGValues,
+    FS_value: isFSValue,
+    fetchFSValue: setFSValues,
+    FB_value: isFBValue,
+    fetchFBValue: setFBValues,
     AS_value: isASValue,
     fetchASValue: setASValues,
+    OR_value: isORValue,
+    fetchORValue: setORValues,
   }
 
   return (
