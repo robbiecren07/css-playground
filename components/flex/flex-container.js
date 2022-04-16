@@ -4,17 +4,19 @@ import FlexItem from './flex-item'
 
 import styles from '../../styles/Flex.module.scss'
 
-const DisplayFlexItem = ({ flexItems, removeFlexItem, selectedItem }) => {
+const DisplayFlexItem = ({ flexItems, selectedItem }) => {
+
   return flexItems.map((item) => (
     <>
-      <FlexItem key={item} itemCount={item} trashClick={() => { removeFlexItem(item) }} selectedItem={selectedItem} />
+      <FlexItem key={item.key} itemCount={item.value} itemKey={item.key} selectedItem={selectedItem} />
     </>
   ))
 }
 
-const FlexContainer = ({ addFlexItem, setAddFlexItem, selectedItem }) => {
+const FlexContainer = ({ selectedItem }) => {
 
   const flexCtx = useContext(FlexSidebarContext)
+  const flexItems = flexCtx.Flex_items
 
   return (
     <section
@@ -23,12 +25,8 @@ const FlexContainer = ({ addFlexItem, setAddFlexItem, selectedItem }) => {
     >
 
       <DisplayFlexItem
-        flexItems={addFlexItem}
+        flexItems={flexItems}
         selectedItem={selectedItem}
-        removeFlexItem={(item) => {
-          const newAddFlexItem = addFlexItem.filter((currentItem) => currentItem !== item)
-          setAddFlexItem(newAddFlexItem)
-        }}
       />
       
     </section>

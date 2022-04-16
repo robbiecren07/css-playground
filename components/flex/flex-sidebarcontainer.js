@@ -10,16 +10,23 @@ import { faArrowUpRightFromSquare } from '@fortawesome/pro-solid-svg-icons'
 
 import styles from '../../styles/Flex.module.scss'
 
-const FlexSidebarContainer = ({ onClick }) => {
+const FlexSidebarContainer = ({ }) => {
 
   const flexCtx = useContext(FlexSidebarContext)
+  const addItem = flexCtx.addFlexItems
 
-  //console.log(flexCtx.FD_value)
+  //console.log(flexCtx.Flex_items)
 
   return (
     <>
       <p className={styles.warning}>Edit properties of the flex container here. Click an item to the right to edit its properties.</p>
-      <Button onClick={onClick} variant="solid" w="100%" h="48px" fontSize="18px">
+      <Button
+        variant="solid"
+        w="100%" 
+        h="48px"
+        fontSize="18px"
+        onClick={addItem}
+      >
         Add Flex Item
       </Button>
         

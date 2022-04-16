@@ -10,13 +10,13 @@ import { faArrowUpRightFromSquare } from '@fortawesome/pro-solid-svg-icons'
 
 import styles from '../../styles/Flex.module.scss'
 
-const FlexSidebarItems = ({ addFlexItem, selectedItem }) => {
+const FlexSidebarItems = ({ selectedItem }) => {
   
   const flexCtx = useContext(FlexSidebarContext)
+  const addFlexItem = flexCtx.Flex_items.length
+  //console.log(addFlexItem)
 
-  //console.log(flexCtx.FG_value)
-
-  if (addFlexItem.length === 0) {
+  if (addFlexItem === 0) {
     return (
       <p className={styles.warning}>Add an item from the Container tab first.</p>
     )

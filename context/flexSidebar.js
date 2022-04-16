@@ -20,7 +20,10 @@ const FlexSidebarContext = createContext({
   AS_value: 'auto',
   fetchASValue: function (value) { },
   OR_value: 0,
-  fetchORValue: function (value) {},
+  fetchORValue: function (value) { },
+  Flex_items: [],
+  addFlexItems: function () { },
+  removeFlexItem: function (e) {},
 })
 
 export const FlexSidebarContextProvider = ({ children }) => {
@@ -50,7 +53,28 @@ export const FlexSidebarContextProvider = ({ children }) => {
   const setASValues = (value) => { setASValue(value) }
   const setORValues = (value) => { setORValue(value) }
 
+  {/* add flex items */ }
+  const [items, setItems] = useState([])
+
+  const addItem = () => {
+    const flex_item = 'flex_item-'
+    setItems((items) => [...items, {
+      id: items.length,
+      value: items.length + 1,
+      key: flex_item.concat(Math.floor(Math.random() * 1000 + 1))
+    }])
+  }
+
+  const removeItem = (e) => {
+    const theItem = e
+    const newItemCount = items.filter(item => item.key !== theItem)
+    setItems(newItemCount)
+  }
+
   const context = {
+    Flex_items: items,
+    addFlexItems: addItem,
+    removeFlexItem: removeItem,
     FD_value: isFDValue,
     fetchFDValue: setFDValues,
     FW_value: isFWValue,

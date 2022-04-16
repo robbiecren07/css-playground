@@ -5,7 +5,7 @@ import FlexSidebarItems from './flex-sidebaritems'
 import styles from '../../styles/Flex.module.scss'
 import { Button, ButtonGroup } from '@chakra-ui/react';
 
-const FlexSidebar = ({ onClick, handleFD, handleFW, handleJC, handleAI, handleAC, addFlexItem, selectedItem, handleFG }) => {
+const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
 
   const [container, setContainer] = useState(true)
   const [items, setItems] = useState(false)
@@ -34,17 +34,11 @@ const FlexSidebar = ({ onClick, handleFD, handleFW, handleJC, handleAI, handleAC
 
       <section className={styles.wrap}>
         {container === true && <FlexSidebarContainer
-          onClick={onClick}
-          handleFD={handleFD}
-          handleFW={handleFW}
-          handleJC={handleJC}
-          handleAC={handleAC}
-          handleAI={handleAI} />}
+          onClick={onClick} />}
         
         {items === true && <FlexSidebarItems
           addFlexItem={addFlexItem}
-          selectedItem={selectedItem}
-          handleFG={handleFG} />}
+          selectedItem={selectedItem} />}
       </section>
 
     </aside>

@@ -11,7 +11,7 @@ let currentIndex = 0
 export default function FlexPlayground() {
 
   // useState for adding & selecting a flex item
-  const [addFlexItem, setAddFlexItem] = useState([])
+  //const [addFlexItem, setAddFlexItem] = useState([])
   const [isSelectedItem, setSelectedItem] = useState(null)
 
   return (
@@ -19,14 +19,14 @@ export default function FlexPlayground() {
       <main className={styles.container}>
 
       <FlexSidebar
-        onClick={() => setAddFlexItem([...addFlexItem, currentIndex++])}
-        addFlexItem={addFlexItem}
+        // onClick={() => setAddFlexItem([...addFlexItem, currentIndex++])}
+        // addFlexItem={addFlexItem}
         selectedItem={isSelectedItem}
       />
 
       <FlexContainer
-        addFlexItem={addFlexItem}
-        setAddFlexItem={setAddFlexItem}
+        // addFlexItem={addFlexItem}
+        // setAddFlexItem={setAddFlexItem}
         selectedItem={() => setSelectedItem()}
       />
 
