@@ -12,7 +12,7 @@ const FlexSidebarContext = createContext({
   AC_value: 'flex-start',
   fetchACValue: function (value) {},
   FG_value: 0,
-  fetchFGValue: function (value) { },
+  fetchFGValue: function (value, key) { },
   FS_value: 0,
   fetchFSValue: function (value) { },
   FB_value: 'auto',
@@ -23,7 +23,12 @@ const FlexSidebarContext = createContext({
   fetchORValue: function (value) { },
   Flex_items: [],
   addFlexItems: function () { },
-  removeFlexItem: function (e) {},
+  removeFlexItem: function (value) { },
+  fetchEditItem: function (e) { },
+  editItemActive: false,
+  selectedItemID: null,
+  selected_Item: null,
+  fetchSelectedItem: function (value) { },
 })
 
 export const FlexSidebarContextProvider = ({ children }) => {
@@ -56,22 +61,61 @@ export const FlexSidebarContextProvider = ({ children }) => {
   {/* add flex items */ }
   const [items, setItems] = useState([])
 
+  const [isSelectedItem, setSelectedItem] = useState(false)
+  const setSelectedItems = (value) => { setSelectedItem(value) }
+  //console.log(isSelectedItem)
+
   const addItem = () => {
     const flex_item = 'flex_item-'
     setItems((items) => [...items, {
       id: items.length,
       value: items.length + 1,
-      key: flex_item.concat(Math.floor(Math.random() * 1000 + 1))
+      key: flex_item.concat(Math.floor(Math.random() * 1000 + 1)),
+      active: false,
+      FG_value: 0,
+      FS_value: 0,
+      FB_value: 'auto',
+      AS_value: 'auto',
+      OR_value: 0,
     }])
   }
 
-  const removeItem = (e) => {
-    const theItem = e
+  const removeItem = (value) => {
+    const theItem = value
+    //console.log(theItem)
     const newItemCount = items.filter(item => item.key !== theItem)
     setItems(newItemCount)
   }
 
+  {/* edit flex item */ }
+  const [active, setActive] = useState(false)
+  //const [selectedItemID, setSelectedItemID] = useState(false)
+
+  const editItem = (e) => {
+    const itemID = e
+    const selectedItem = items.map((item) => item.key === itemID ? {
+      ...item,
+      active: !item.active
+    } : item)
+    setItems(selectedItem)
+    setSelectedItem(true)
+    //console.log(items)
+  }
+
+  const editFGValue = (value, key) => {
+    const selectedItem = items.map((item) => item.key === key ? {
+      ...item,
+      FG_value: value
+    } : item)
+    setItems(selectedItem)
+  }
+
   const context = {
+    selected_Item: isSelectedItem,
+    fetchSelectedItem: setSelectedItems,
+    //selectedItemID: selectedItemID,
+    editItemActive: active,
+    fetchEditItem: editItem,
     Flex_items: items,
     addFlexItems: addItem,
     removeFlexItem: removeItem,
@@ -86,7 +130,7 @@ export const FlexSidebarContextProvider = ({ children }) => {
     AC_value: isACValue,
     fetchACValue: setACValues,
     FG_value: isFGValue,
-    fetchFGValue: setFGValues,
+    fetchFGValue: editFGValue,
     FS_value: isFSValue,
     fetchFSValue: setFSValues,
     FB_value: isFBValue,

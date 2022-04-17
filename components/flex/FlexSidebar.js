@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // import FlexSidebarNav from './flex-sidebarnav'
-import FlexSidebarContainer from './flex-sidebarcontainer'
-import FlexSidebarItems from './flex-sidebaritems'
+import FlexSidebarContainer from './FlexSidebarContainer'
+import FlexSidebarItems from './FlexSidebarItems'
 import styles from '../../styles/Flex.module.scss'
 import { Button, ButtonGroup } from '@chakra-ui/react';
 

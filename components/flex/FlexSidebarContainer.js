@@ -3,10 +3,8 @@ import FlexSidebarContext from "context/flexSidebar";
 //import Link from "next/link"
 import { Button, Link, Select } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import FlexSidebarTooltip from "./flex-sidebartooltip"
+import FlexSidebarTooltip from "./FlexSidebarTooltip"
 import { fdOptions, fwOptions, jcOptions, aiOptions, acOptions} from '@/utils/select-options'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare } from '@fortawesome/pro-solid-svg-icons'
 
 import styles from '../../styles/Flex.module.scss'
 
@@ -14,8 +12,6 @@ const FlexSidebarContainer = ({ }) => {
 
   const flexCtx = useContext(FlexSidebarContext)
   const addItem = flexCtx.addFlexItems
-
-  //console.log(flexCtx.Flex_items)
 
   return (
     <>

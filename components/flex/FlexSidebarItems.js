@@ -3,18 +3,25 @@ import FlexSidebarContext from "context/flexSidebar";
 //import Link from "next/link"
 import { Button, Input, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import FlexSidebarTooltip from "./flex-sidebartooltip"
+import FlexSidebarTooltip from "./FlexSidebarTooltip"
 import { asOptions} from '@/utils/select-options'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare } from '@fortawesome/pro-solid-svg-icons'
 
 import styles from '../../styles/Flex.module.scss'
 
-const FlexSidebarItems = ({ selectedItem }) => {
-  
+const FlexSidebarItems = ({ }) => {
+ 
   const flexCtx = useContext(FlexSidebarContext)
   const addFlexItem = flexCtx.Flex_items.length
-  //console.log(addFlexItem)
+  const handleFGChange = (value, key) => flexCtx.fetchFGValue(value, key)
+
+  const myItems = flexCtx.Flex_items
+  const found = myItems.find(item => item.active === true)
+  const newFound = new Array(found)
+  console.log(newFound)
+
+  const changeFG = (value, key) => {
+    handleFGChange(value, key)
+  }
 
   if (addFlexItem === 0) {
     return (
@@ -22,14 +29,14 @@ const FlexSidebarItems = ({ selectedItem }) => {
     )
   }
 
-  if (selectedItem === null) {
+  if (found === undefined) {
     return (
       <p className={styles.warning}>Click on a flex item in the container on the right to edit its styles.</p>
     )
   }
 
-  if (selectedItem !== null) {
-    return (
+  if (found !== undefined) {
+    return newFound.map(item => (
       <>
         <p className={styles.warning}>Edit properties of the flex items here. The selected item will have a green border. Click the selected item again to stop editing it.</p>
 
@@ -56,8 +63,8 @@ const FlexSidebarItems = ({ selectedItem }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                defaultValue={flexCtx.FG_value}
-                onChange={(value) => flexCtx.fetchFGValue(value)}
+                defaultValue={item.FG_value}
+                onChange={(value) => changeFG(value, item.key)}
               >
                 <NumberInputField h="40px" />
                 <NumberInputStepper>
@@ -186,7 +193,7 @@ const FlexSidebarItems = ({ selectedItem }) => {
 
         </form>
       </>
-    )
+    ))
   }
 
 }

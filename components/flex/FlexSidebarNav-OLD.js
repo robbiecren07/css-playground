@@ -1,6 +1,5 @@
 import { useState } from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faBrowsers, faSitemap, faAtomSimple } from '@fortawesome/pro-light-svg-icons'
+
 import styles from '../../styles/Flex.module.scss'
 
 // Build left sidebar
