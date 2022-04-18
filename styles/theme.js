@@ -4,7 +4,7 @@ import { createIcon } from '@chakra-ui/icons'
 
 const config = {
   initialColorMode: 'light',
-  useSystemColorMode: true,
+  useSystemColorMode: false,
 }
 
 const theme = extendTheme({

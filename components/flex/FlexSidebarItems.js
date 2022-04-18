@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import FlexSidebarContext from "context/flexSidebar";
 //import Link from "next/link"
-import { Button, Input, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from "@chakra-ui/react";
+import { Box, Input, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import FlexSidebarTooltip from "./FlexSidebarTooltip"
 import { asOptions} from '@/utils/select-options'
@@ -12,15 +12,30 @@ const FlexSidebarItems = ({ }) => {
  
   const flexCtx = useContext(FlexSidebarContext)
   const addFlexItem = flexCtx.Flex_items.length
-  const handleFGChange = (value, key) => flexCtx.fetchFGValue(value, key)
-
   const myItems = flexCtx.Flex_items
-  const found = myItems.find(item => item.active === true)
-  const newFound = new Array(found)
-  console.log(newFound)
+  const findSelectedItem = myItems.find(item => item.selected === true)
+  const theSelectedItem = new Array(findSelectedItem)
+
+  const handleFGChange = (value, key) => flexCtx.fetchFGValue(value, key)
+  const handleFSChange = (value, key) => flexCtx.fetchFSValue(value, key)
+  const handleFBChange = (value, key) => flexCtx.fetchFBValue(value, key)
+  const handleASChange = (value, key) => flexCtx.fetchASValue(value, key)
+  const handleORChange = (value, key) => flexCtx.fetchORValue(value, key)
 
   const changeFG = (value, key) => {
     handleFGChange(value, key)
+  }
+  const changeFS = (value, key) => {
+    handleFSChange(value, key)
+  }
+  const changeFB = (value, key) => {
+    handleFBChange(value, key)
+  }
+  const changeAS = (value, key) => {
+    handleASChange(value, key)
+  }
+  const changeOR = (value, key) => {
+    handleORChange(value, key)
   }
 
   if (addFlexItem === 0) {
@@ -29,15 +44,15 @@ const FlexSidebarItems = ({ }) => {
     )
   }
 
-  if (found === undefined) {
+  if (findSelectedItem === undefined) {
     return (
       <p className={styles.warning}>Click on a flex item in the container on the right to edit its styles.</p>
     )
   }
 
-  if (found !== undefined) {
-    return newFound.map(item => (
-      <>
+  if (findSelectedItem !== undefined) {
+    return theSelectedItem.map(item => (
+      <Box as="div" key={item.key}>
         <p className={styles.warning}>Edit properties of the flex items here. The selected item will have a green border. Click the selected item again to stop editing it.</p>
 
         <form className={styles.form}>
@@ -63,10 +78,10 @@ const FlexSidebarItems = ({ }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                defaultValue={item.FG_value}
+                defaultValue="0"
                 onChange={(value) => changeFG(value, item.key)}
               >
-                <NumberInputField h="40px" />
+                <NumberInputField h="40px" data-lpignore="true" />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
                   <NumberDecrementStepper />
@@ -96,10 +111,10 @@ const FlexSidebarItems = ({ }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                defaultValue={flexCtx.FS_value}
-                onChange={(value) => flexCtx.fetchFSValue(value)}
+                defaultValue="0"
+                onChange={(value) => changeFS(value, item.key)}
               >
-                <NumberInputField h="40px" />
+                <NumberInputField h="40px" data-lpignore="true" />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
                   <NumberDecrementStepper />
@@ -127,8 +142,9 @@ const FlexSidebarItems = ({ }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                value={flexCtx.FB_value}
-                onChange={(e) => flexCtx.fetchFBValue(e.target.value)}
+                value="auto"
+                onChange={(value) => changeFB(value, item.key)}
+                data-lpignore="true"
               />
             </div>
           </div>
@@ -149,8 +165,8 @@ const FlexSidebarItems = ({ }) => {
               fontSize="1rem"
               h="40px"
               mt="4px"
-              value={flexCtx.AS_value}
-              onChange={(e) => flexCtx.fetchASValue(e.target.value)}
+              defaultValue="auto"
+              onChange={(e) => changeAS(e.target.value, item.key)}
             >
             {asOptions.map((option, index) => (
               <option key={index} value={option.value}>{option.label}</option>
@@ -179,10 +195,10 @@ const FlexSidebarItems = ({ }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                defaultValue={flexCtx.OR_value}
-                onChange={(value) => flexCtx.fetchORValue(value)}
+                defaultValue="0"
+                onChange={(value) => changeOR(value, item.key)}
               >
-                <NumberInputField h="40px" />
+                <NumberInputField h="40px" data-lpignore="true" />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
                   <NumberDecrementStepper />
@@ -192,7 +208,7 @@ const FlexSidebarItems = ({ }) => {
           </div>
 
         </form>
-      </>
+      </Box>
     ))
   }
 

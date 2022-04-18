@@ -12,34 +12,29 @@ const DisplayFlexItem = () => {
   const flexItems = flexCtx.Flex_items
   const handleRemoveItem = (e) => flexCtx.removeFlexItem(e)
   const handleEditItem = (e) => flexCtx.fetchEditItem(e)
-  const handleSelectedItem = (e) => flexCtx.fetchSelectedItem(e)
+  const cx = (...classNames) => classNames.join(' ');
 
   const edit = (e) => {
     handleEditItem(e)
-    handleSelectedItem(e)
   }
 
   const remove = (e) => {
     handleRemoveItem(e)
   }
 
-  const cx = (...classNames) => classNames.join(' ');
-
   return flexItems.map((item) => (
-    <>
-      <div className={styles.flex_item} style={{ flexGrow: item.FG_value, flexShrink: item.FS_value, flexBasis: item.FB_value, alignSelf: item.AS_value, order: item.OR_value }}>
-        <div className={styles.flex_item_wrap}>
-          <div className={styles.flex_item_inner}>
-          <Text color="#080808">Item: {item.id}</Text>
-          </div>
-          <button className={item.active ? `${cx(styles.edit, styles.active)}` : `${styles.edit}`} onClick={() => edit(item.key)}>{item.active ? 'Done' : 'Edit'}</button>
+    <div key={item.key} className={item.selected ? `${cx(styles.flex_item, styles.active)}` : `${styles.flex_item}`} style={{ flexGrow: item.FG_value, flexShrink: item.FS_value, flexBasis: item.FB_value, alignSelf: item.AS_value, order: item.OR_value }}>
+      <div className={styles.flex_item_wrap}>
+        <div className={styles.flex_item_inner}>
+        <Text color="#080808">Item: {item.id}</Text>
         </div>
-      
-        <button className={styles.trash} onClick={() => remove(item.key)}>
-          <FontAwesomeIcon icon={faTrashCanXmark} />
-        </button>
+        <button className={item.selected ? `${cx(styles.edit, styles.active)}` : `${styles.edit}`} onClick={() => edit(item.key)}>{item.selected ? 'Done' : 'Edit'}</button>
       </div>
-    </>
+    
+      <button className={styles.trash} onClick={() => remove(item.key)}>
+        <FontAwesomeIcon icon={faTrashCanXmark} />
+      </button>
+    </div>
   ))
 
 }

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 // import FlexSidebarNav from './flex-sidebarnav'
+import FlexSidebarContext from "context/flexSidebar";
 import FlexSidebarContainer from './FlexSidebarContainer'
 import FlexSidebarItems from './FlexSidebarItems'
 import styles from '../../styles/Flex.module.scss'
@@ -9,6 +10,19 @@ const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
 
   const [container, setContainer] = useState(true)
   const [items, setItems] = useState(false)
+  const [selected, setSelected] = useState(false)
+
+  const flexCtx = useContext(FlexSidebarContext)
+  const myItems = flexCtx.Flex_items
+  const findSelectedItem = myItems.find(item => item.selected === true)
+
+  console.log(findSelectedItem)
+  useEffect(() => {
+    if (findSelectedItem !== undefined) {
+      setItems(true)
+      setContainer(false)
+    }
+  })
 
   const containerDisplay = () => {
     setContainer(true)
