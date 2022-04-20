@@ -71,13 +71,6 @@ select {
   cursor: pointer;
 }
 
-button {
-  &.active {
-    color: #357DF8;
-    background-color: #e5e7eb;
-  }
-}
-
 #__next {
   height: 100%;
 }

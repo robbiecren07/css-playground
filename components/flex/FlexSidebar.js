@@ -4,7 +4,7 @@ import FlexSidebarContext from "context/flexSidebar";
 import FlexSidebarContainer from './FlexSidebarContainer'
 import FlexSidebarItems from './FlexSidebarItems'
 import styles from '../../styles/Flex.module.scss'
-import { Button, ButtonGroup } from '@chakra-ui/react';
+import { Button, ButtonGroup, useColorModeValue } from '@chakra-ui/react';
 
 const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
 
@@ -16,7 +16,9 @@ const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
   const myItems = flexCtx.Flex_items
   const findSelectedItem = myItems.find(item => item.selected === true)
 
-  console.log(findSelectedItem)
+  const cx = (...classNames) => classNames.join(' ');
+  const bg = useColorModeValue('blackAlpha.200', 'white')
+
   useEffect(() => {
     if (findSelectedItem !== undefined) {
       setItems(true)
@@ -37,11 +39,11 @@ const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
   return (
     <aside className={styles.left_sidebar}>
 
-      <ButtonGroup className={styles.sidebar_nav} spacing="1" size="xl">
-        <Button className={`${container ? "active" : ""}`} onClick={containerDisplay} variant="sb-btn">
+      <ButtonGroup className={styles.sidebar_nav} spacing="1" size="md" colorScheme='blue' variant='ghost' bg={bg}>
+        <Button className={container ? `${cx(styles.active, 'active')}` : ''} onClick={containerDisplay} w="100%">
           Container
         </Button>
-        <Button className={`${items ? "active" : ""}`} onClick={itemsDisplay} variant="sb-btn">
+        <Button className={items ? `${cx(styles.active, 'active')}` : ''} onClick={itemsDisplay} w="100%">
           Items
         </Button>
       </ButtonGroup>
@@ -55,6 +57,14 @@ const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
           selectedItem={selectedItem} />}
       </section>
 
+      <ButtonGroup colorScheme='blue' variant='outline' spacing="2" size="md" justifyContent="center" mt="auto" mb="30px">
+        <Button onClick={flexCtx.doClearItems}>
+          Start Over
+        </Button>
+        <Button>
+          View Markup
+        </Button>
+      </ButtonGroup>
     </aside>
   )
 

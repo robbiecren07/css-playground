@@ -17,6 +17,7 @@ const FlexSidebarContext = createContext({
   addFlexItems: function () { },
   removeFlexItem: function (value) { },
   fetchEditItem: function (value) { },
+  doClearItems: function () {},
 
   fetchFGValue: function (value, key) { },
   fetchFSValue: function (value, key) { },
@@ -71,44 +72,63 @@ export const FlexSidebarContextProvider = ({ children }) => {
     setItems(selectedItem)
   }
 
+  const clearItems = () => {
+    const copyItems = [...items]
+    const setDefaults = copyItems.map((item) => item ? {
+      ...item,
+      selected: false,
+      FG_value: 0,
+      FS_value: 0,
+      FB_value: 'auto',
+      AS_value: 'auto',
+      OR_value: 0,
+    } : item )
+    setItems(setDefaults)
+    setFDValue('row')
+    setFWValue('nowrap')
+    setJCValue('flex-start')
+    setAIValue('flex-start')
+    setACValue('flex-start')
+  }
+
   const editFGValue = (value, key) => {
-    const selectedItem = items.map((item) => item.key === key ? {
+    const FGValue = items.map((item) => item.key === key ? {
       ...item,
       FG_value: value
     } : item)
-    setItems(selectedItem)
+    setItems(FGValue)
   }
 
   const editFSValue = (value, key) => {
-    const selectedItem = items.map((item) => item.key === key ? {
+    const FSValue = items.map((item) => item.key === key ? {
       ...item,
       FS_value: value
     } : item)
-    setItems(selectedItem)
+    setItems(FSValue)
   }
 
   const editFBValue = (value, key) => {
-    const selectedItem = items.map((item) => item.key === key ? {
+    const FBValue = items.map((item) => item.key === key ? {
       ...item,
       FB_value: value
     } : item)
-    setItems(selectedItem)
+    setItems(FBValue)
   }
 
   const editASValue = (value, key) => {
-    const selectedItem = items.map((item) => item.key === key ? {
+    const ASValue = items.map((item) => item.key === key ? {
       ...item,
       AS_value: value
     } : item)
-    setItems(selectedItem)
+    setItems(ASValue)
   }
 
   const editORValue = (value, key) => {
-    const selectedItem = items.map((item) => item.key === key ? {
+    const ORValue = items.map((item) => item.key === key ? {
       ...item,
       OR_value: value
     } : item)
-    setItems(selectedItem)
+    setItems(ORValue)
   }
 
   const context = {
@@ -116,6 +136,7 @@ export const FlexSidebarContextProvider = ({ children }) => {
     addFlexItems: addItem,
     removeFlexItem: removeItem,
     fetchEditItem: editItem,
+    doClearItems: clearItems,
 
     FD_value: isFDValue,
     fetchFDValue: setFDValues,

@@ -39,8 +39,8 @@ const theme = extendTheme({
       100: '#BAD3FC',
       200: '#8EB6FB',
       300: '#6299F9',
-      400: '#357DF8',
-      500: '#0960F6',
+      400: '#4E8CF9',
+      500: '#357DF8',
       600: '#074DC5',
       700: '#053A94',
       800: '#042662',
@@ -189,6 +189,9 @@ const theme = extendTheme({
             bgGradient: 'linear-gradient(to bottom right, #7F3BF2, #357DF8)',
           }
         }),
+        outline: {
+          border: '2px',
+        },
         'outline-blue': (props) => ({
           w: '100%',
           h: '48px',

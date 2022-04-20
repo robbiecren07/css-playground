@@ -23,11 +23,12 @@
     max-width: 340px;
   }
   .sidebar_nav {
-    display: inline-flex;
+    // background: var(--c-white-b);
+    padding: 6px;
     margin: 1rem;
-    &:focus-visible {
-      border-color: var(--c-blue);
-      box-shadow: 0 0 0 1px var(--c-blue);
+    border-radius: 10px;
+    .active {
+      background: var(--chakra-colors-blue-50);
     }
   }
   .wrap {

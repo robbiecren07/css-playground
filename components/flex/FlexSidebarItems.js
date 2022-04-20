@@ -78,7 +78,7 @@ const FlexSidebarItems = ({ }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                defaultValue="0"
+                defaultValue={item.FG_value}
                 onChange={(value) => changeFG(value, item.key)}
               >
                 <NumberInputField h="40px" data-lpignore="true" />
@@ -111,7 +111,7 @@ const FlexSidebarItems = ({ }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                defaultValue="0"
+                defaultValue={item.FS_value}
                 onChange={(value) => changeFS(value, item.key)}
               >
                 <NumberInputField h="40px" data-lpignore="true" />
@@ -142,7 +142,7 @@ const FlexSidebarItems = ({ }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                value="auto"
+                defaultValue={item.FB_value}
                 onChange={(value) => changeFB(value, item.key)}
                 data-lpignore="true"
               />
@@ -165,7 +165,7 @@ const FlexSidebarItems = ({ }) => {
               fontSize="1rem"
               h="40px"
               mt="4px"
-              defaultValue="auto"
+              defaultValue={item.AS_value}
               onChange={(e) => changeAS(e.target.value, item.key)}
             >
             {asOptions.map((option, index) => (
@@ -195,7 +195,7 @@ const FlexSidebarItems = ({ }) => {
                 fontSize="1rem"
                 h="40px"
                 mt="4px"
-                defaultValue="0"
+                defaultValue={item.OR_value}
                 onChange={(value) => changeOR(value, item.key)}
               >
                 <NumberInputField h="40px" data-lpignore="true" />
