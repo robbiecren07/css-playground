@@ -146,3 +146,9 @@ select {
 .hidden {
   display: none;
 }
+
+.markup_code {
+  min-height: 280px;
+  border: 1px solid var(--c-white-b);
+  border-radius: 10px;
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import FlexSidebarContext from "context/flexSidebar";
+import FlexSidebarContext from "context/flexSidebarContext";
 import { Text } from "@chakra-ui/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCanXmark } from '@fortawesome/pro-solid-svg-icons'

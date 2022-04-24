@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const FlexSidebarContext = createContext({
   FD_value: 'row',
@@ -11,19 +11,24 @@ const FlexSidebarContext = createContext({
   fetchAIValue: function (value) {},
   AC_value: 'flex-start',
   fetchACValue: function (value) {},
-  FG_value: 0,
 
   Flex_items: [],
   addFlexItems: function () { },
   removeFlexItem: function (value) { },
   fetchEditItem: function (value) { },
-  doClearItems: function () {},
+  doClearItems: function () { },
+  
+  selectedItemValue: false,
+  fetchSelectedItem: function () {},
 
   fetchFGValue: function (value, key) { },
   fetchFSValue: function (value, key) { },
   fetchFBValue: function (value, key) { },
   fetchASValue: function (value, key) { },
   fetchORValue: function (value, key) { },
+
+  markUpValue: false,
+  fetchMarkup: function () { },
 })
 
 export const FlexSidebarContextProvider = ({ children }) => {
@@ -39,16 +44,25 @@ export const FlexSidebarContextProvider = ({ children }) => {
   const setJCValues = (value) => { setJCValue(value) }
   const setAIValues = (value) => { setAIValue(value) }
   const setACValues = (value) => { setACValue(value) }
+
+  const [showMarkUp, setMarkUp] = useState(false)
+
+  const markUp = () => {
+    setMarkUp(!showMarkUp)
+  }
   
   {/* add flex items */ }
   const [items, setItems] = useState([])
 
+  const randomKey = () => {
+    return '_' + Math.random().toString(36).substring(2, 9);
+  }
+
   const addItem = () => {
-    const flex_item = 'flex_item-'
     setItems((items) => [...items, {
       id: items.length,
       value: items.length + 1,
-      key: flex_item.concat(Math.floor(Math.random() * 1000 + 1)),
+      key: randomKey(),
       selected: false,
       FG_value: 0,
       FS_value: 0,
@@ -65,16 +79,19 @@ export const FlexSidebarContextProvider = ({ children }) => {
 
   {/* select/edit flex item */ }
   const editItem = (value) => {
-    const selectedItem = items.map((item) => item.key === value ? {
+    const updatedItems = items.map((item) => item.key === value ? {
       ...item,
       selected: !item.selected
-    } : item)
-    setItems(selectedItem)
+    } : {
+      ...item,
+      selected: false
+    })
+    setItems(updatedItems)
   }
 
   const clearItems = () => {
     const copyItems = [...items]
-    const setDefaults = copyItems.map((item) => item ? {
+    const setDefaults = copyItems.map(item => ({
       ...item,
       selected: false,
       FG_value: 0,
@@ -82,7 +99,7 @@ export const FlexSidebarContextProvider = ({ children }) => {
       FB_value: 'auto',
       AS_value: 'auto',
       OR_value: 0,
-    } : item )
+    }))
     setItems(setDefaults)
     setFDValue('row')
     setFWValue('nowrap')
@@ -154,6 +171,9 @@ export const FlexSidebarContextProvider = ({ children }) => {
     fetchFBValue: editFBValue,
     fetchASValue: editASValue,
     fetchORValue: editORValue,
+
+    markUpValue: showMarkUp,
+    fetchMarkup: markUp,
   }
 
   return (

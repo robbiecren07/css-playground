@@ -1,5 +1,5 @@
 //import { useState } from 'react';
-import { FlexSidebarContextProvider } from 'context/flexSidebar';
+import { FlexSidebarContextProvider } from 'context/flexSidebarContext';
 import FlexSidebar from '@/components/flex/FlexSidebar';
 import FlexContainer from '@/components/flex/FlexContainer';
 

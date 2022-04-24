@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import FlexSidebarContext from "context/flexSidebar";
+import FlexSidebarContext from "context/flexSidebarContext";
 import { Text } from "@chakra-ui/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCanXmark } from '@fortawesome/pro-solid-svg-icons'
@@ -12,7 +12,7 @@ const DisplayFlexItem = () => {
   const flexItems = flexCtx.Flex_items
   const handleRemoveItem = (e) => flexCtx.removeFlexItem(e)
   const handleEditItem = (e) => flexCtx.fetchEditItem(e)
-  const cx = (...classNames) => classNames.join(' ');
+  const cx = (...classNames) => classNames.join(' ')
 
   const edit = (e) => {
     handleEditItem(e)

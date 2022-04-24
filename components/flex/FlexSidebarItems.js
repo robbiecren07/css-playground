@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import FlexSidebarContext from "context/flexSidebar";
+import FlexSidebarContext from "context/flexSidebarContext";
 //import Link from "next/link"
 import { Box, Input, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";

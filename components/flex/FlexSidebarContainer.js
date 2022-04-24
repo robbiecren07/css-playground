@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import FlexSidebarContext from "context/flexSidebar";
+import FlexSidebarContext from "context/flexSidebarContext";
 //import Link from "next/link"
 import { Button, Link, Select } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
