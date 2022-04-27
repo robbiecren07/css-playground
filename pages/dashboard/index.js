@@ -1,5 +1,6 @@
 import useSWR from 'swr'
 import { useAuth } from '@/lib/auth'
+import { NextSeo } from 'next-seo'
 import fetcher from '@/utils/fetcher'
 import DashboardShell from '@/components/DashboardShell'
 
@@ -45,7 +46,10 @@ const Dashboard = () => {
 export default function DashboardPage() {
     
   return (
-    <Dashboard />
+    <>
+      <NextSeo noindex={true} nofollow={true} />
+      <Dashboard />
+    </>
   )
 
 }

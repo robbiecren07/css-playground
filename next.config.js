@@ -1,8 +1,3 @@
-// const nextConfig = {
-//   reactStrictMode: true,
-// }
-// module.exports = nextConfig
-
 const path = require('path')
 
 module.exports = {
@@ -15,11 +10,3 @@ module.exports = {
   },
   reactStrictMode: true,
 }
-
-// const withMDX = require('@next/mdx')({
-//   extension: /\.mdx?$/
-// });
-
-// module.exports = withMDX({
-//   pageExtensions: ['js', 'jsx', 'mdx']
-// });
