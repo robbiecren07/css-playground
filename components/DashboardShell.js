@@ -43,7 +43,7 @@ const DashboardShell = ({ children }) => {
           </div>
 
           <div>
-            <button className="button" onClick={() => signout()}>
+            <button className="button" onClick={signout}>
               Log Out
             </button>
           </div>

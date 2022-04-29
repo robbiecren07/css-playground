@@ -1,11 +1,14 @@
-import { useContext } from 'react';
-import FlexSidebarContext from "context/flexSidebarContext";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark, atomOneLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-import { useColorModeValue } from '@chakra-ui/react';
+import { useContext, useState } from 'react'
+import FlexSidebarContext from "context/flexSidebarContext"
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { atomOneDark, atomOneLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import { CopyToClipboard } from "react-copy-to-clipboard"
+import { useColorModeValue, Box } from '@chakra-ui/react'
+import { CopyIcon, CheckIcon } from '@chakra-ui/icons'
 
 const CSSMarkup = () => {
 
+  const [isCopied, setIsCopied] = useState(false);
   const codeBG = useColorModeValue(atomOneLight, atomOneDark)
   
   const flexCtx = useContext(FlexSidebarContext)
@@ -84,10 +87,26 @@ const CSSMarkup = () => {
 
   const cssString = `${containerCSS}${itemsCSS}`
 
+  const onCopyText = () => {
+    setIsCopied(true)
+    setTimeout(() => {
+      setIsCopied(false)
+    }, 2000)
+  }
+
   return (
-    <SyntaxHighlighter language='css' style={codeBG} className="markup_code">
-      {cssString}
-    </SyntaxHighlighter>
+    <>
+      <Box>
+        <SyntaxHighlighter language='css' style={codeBG} className="markup_code">
+          {cssString}
+        </SyntaxHighlighter>
+        <Box position="absolute" bottom="10px" right="15px" cursor="pointer">
+          <CopyToClipboard text={cssString} onCopy={onCopyText}>
+            {isCopied ? <CheckIcon w={4} h={4} /> : <CopyIcon w={4} h={4} />}
+          </CopyToClipboard>
+        </Box>
+      </Box>
+    </>
   )
 }
 

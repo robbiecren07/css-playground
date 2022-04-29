@@ -20,8 +20,20 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 5px 0;
       .nav_logo {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
         object-fit: cover;
+        span {
+          font-size: 42px;
+          font-family: 'Exo', sans-serif;
+          font-weight: 700;
+          letter-spacing: -1px;
+          line-height: 1.2;
+          padding-left: 5px
+        }
       }
       .nav_links {
         display: flex;
@@ -71,16 +83,6 @@
             background-image: linear-gradient(to bottom left, var(--c-purple) , var(--c-blue));
           }
         }
-        .avatar {
-          display: flex;
-          align-items: center;
-          padding-left: 30px;
-          img {
-            width: 36px;
-            border-radius: 9999px;
-            object-fit: cover;
-          }
-        }
       }
       .btn {
         display: block;
@@ -101,6 +103,49 @@
           }
         }
       }
+    }
+  }
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  img {
+    width: 36px;
+    border-radius: 9999px;
+    object-fit: cover;
+  }
+}
+
+.auth_btn {
+  display: block;
+  padding: 2px;
+  background-image: linear-gradient(to bottom right, var(--c-purple), var(--c-blue));
+  margin-bottom: 10px;
+  @media (min-width: 1024px) {
+    margin-bottom: 15px;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .btn_inner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem 1.5rem;
+    background-color: var(--c-white);
+    transition: color 0.3s ease-in-out, background-image 1s ease-in-out;
+    span {
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+  }
+  &:hover {
+    .btn_inner {
+      color: var(--c-white);
+      background-image: linear-gradient(to bottom right, var(--c-purple), var(--c-blue));
     }
   }
 }

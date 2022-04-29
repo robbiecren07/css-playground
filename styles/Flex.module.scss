@@ -14,10 +14,10 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--c-white-b);
+  border-bottom: 1px solid;
   @media (min-width: 1024px) {
     max-width: 260px;
-    border-right: 1px solid var(--c-white-b);
+    border-right: 1px solid;
     border-bottom: 0;
   }
   @media (min-width: 1366px) {
@@ -88,7 +88,6 @@
   flex-grow: 1;
   gap: 1rem;
   padding: 1rem;
-  background-color: #f8fafc;
   overflow-y: auto;
 }
 

@@ -1,4 +1,6 @@
 import useSWR from 'swr'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router';
 import { useAuth } from '@/lib/auth'
 import { NextSeo } from 'next-seo'
 import fetcher from '@/utils/fetcher'
@@ -44,7 +46,15 @@ const Dashboard = () => {
 }
 
 export default function DashboardPage() {
-    
+  const { user, loading } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!loading && !user) {
+        router.push('/');
+    }
+  }, [user, loading]);
+
   return (
     <>
       <NextSeo noindex={true} nofollow={true} />

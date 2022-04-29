@@ -9,8 +9,8 @@ import styles from '../styles/Flex.module.scss'
 
 export default function FlexPlayground() {
 
-  const title = 'Flex Playground | CSS Playground - TEST'
-  const description = 'This example uses more of the available config options.'
+  const title = 'CSS Flexbox Playground | CSS Playground'
+  const description = 'Learn and build your own CSS Flexbox layouts with an interative building tool, which will output your HTML & CSS.'
   const url = 'https://www.cssplayground.dev/flex-playground/'
 
   return (
@@ -22,9 +22,10 @@ export default function FlexPlayground() {
       />
       <FlexSidebarContextProvider>
         <main className={styles.container}>
-
-        <FlexSidebar />
-        <FlexContainer />
+          <h1 className="screen-reader-text">CSS Flex Playground - Learn how to build Flexbox layouts.</h1>
+          
+          <FlexSidebar />
+          <FlexContainer />
 
         </main>
       </FlexSidebarContextProvider>

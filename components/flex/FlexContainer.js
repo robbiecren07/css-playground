@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import FlexSidebarContext from "context/flexSidebarContext";
 import DisplayFlexItem from './DisplayFlexItem';
 import FlexMarkup from './FlexMarkup';
+import { Box, useColorModeValue } from '@chakra-ui/react';
 
 import styles from '../../styles/Flex.module.scss'
 
@@ -9,20 +10,21 @@ const FlexContainer = () => {
 
   const flexCtx = useContext(FlexSidebarContext)
   const showMarkUp = flexCtx.markUpValue
+  const bg = useColorModeValue('#f8fafc', '#080F21')
 
   return (
     <>
       {showMarkUp === false && 
-        <section className={styles.right_content}
+        <Box as="section" bg={bg} className={styles.right_content}
           style={{ flexDirection: flexCtx.FD_value, flexWrap: flexCtx.FW_value, justifyContent: flexCtx.JC_value, alignItems: flexCtx.AI_value, alignContent: flexCtx.AC_value }}>
           <DisplayFlexItem />
-        </section>
+        </Box>
       }
       
       {showMarkUp === true &&
-        <section className={styles.right_content}>
+        <Box as="section" bg={bg} className={styles.right_content}>
           <FlexMarkup />
-        </section>
+        </Box>
       }
     </>
   )

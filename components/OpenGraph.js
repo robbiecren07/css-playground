@@ -13,14 +13,15 @@ const OpenGraph = ({ title, description, canonical, url  }) => {
         url: url,
         title: title,
         description: description,
-        // images: [
-        //   {
-        //     url: 'https://www.example.ie/og-image-01.jpg',
-        //     width: 800,
-        //     height: 600,
-        //     alt: 'Og Image Alt',
-        //     type: 'image/jpeg',
-        //   },
+        images: [
+          {
+            url: 'https://cssplayground.dev/css-playground-logo-400.jpg',
+            width: 400,
+            height: 200,
+            alt: 'CSS Playground, an interactive web app for learning and building CSS layouts',
+            type: 'image/jpeg',
+          },
+        ],
         //   {
         //     url: 'https://www.example.ie/og-image-02.jpg',
         //     width: 900,
