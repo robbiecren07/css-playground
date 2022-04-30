@@ -140,13 +140,13 @@
     border-bottom-right-radius: 8px;
     transition: all 0.3s ease-in-out;
     svg {
-      color: var(--c-gray-1);
+      fill: var(--c-gray-1);
       transition: all 0.3s ease-in-out;
     }
     &:hover {
       background-color: var(--c-red-1);
       svg {
-        color: var(--c-red);
+        fill: var(--c-red);
       }
     }
   }

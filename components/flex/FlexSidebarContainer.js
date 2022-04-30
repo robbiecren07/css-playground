@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import FlexSidebarContext from "context/flexSidebarContext";
-//import Link from "next/link"
-import { Button, Link, Select } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import FlexSidebarTooltip from "./FlexSidebarTooltip"
+import { useContext } from 'react'
+import FlexSidebarContext from 'context/flexSidebarContext'
+//import Link from 'next/link'
+import { Button, Link, Select } from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
+import FlexSidebarTooltip from './FlexSidebarTooltip'
 import { fdOptions, fwOptions, jcOptions, aiOptions, acOptions} from '@/utils/select-options'
 
 import styles from '../../styles/Flex.module.scss'

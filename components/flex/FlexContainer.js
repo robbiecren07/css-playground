@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
-import FlexSidebarContext from "context/flexSidebarContext";
-import DisplayFlexItem from './DisplayFlexItem';
-import FlexMarkup from './FlexMarkup';
-import { Box, useColorModeValue } from '@chakra-ui/react';
+import { useState, useEffect, useContext } from 'react'
+import FlexSidebarContext from 'context/flexSidebarContext'
+import DisplayFlexItem from './DisplayFlexItem'
+import FlexMarkup from './FlexMarkup'
+import { Box, useColorModeValue } from '@chakra-ui/react'
 
 import styles from '../../styles/Flex.module.scss'
 

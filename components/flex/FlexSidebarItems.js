@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from "react";
-import FlexSidebarContext from "context/flexSidebarContext";
-//import Link from "next/link"
-import { Box, Input, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import FlexSidebarTooltip from "./FlexSidebarTooltip"
+import { useState, useEffect, useContext } from 'react'
+import FlexSidebarContext from 'context/flexSidebarContext'
+//import Link from 'next/link'
+import { Box, Input, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
+import FlexSidebarTooltip from './FlexSidebarTooltip'
 import { asOptions} from '@/utils/select-options'
 
 import styles from '../../styles/Flex.module.scss'

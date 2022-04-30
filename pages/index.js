@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import OpenGraph from '@/components/OpenGraph';
+import OpenGraph from '@/components/OpenGraph'
 import { Heading, Button, Container, Box } from '@chakra-ui/react'
 
 import styles from '../styles/Home.module.scss'

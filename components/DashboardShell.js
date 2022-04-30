@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from './Image';
-import { useAuth } from '@/lib/auth';
+import React from 'react'
+import Link from 'next/link'
+import Image from './Image'
+import { useAuth } from '@/lib/auth'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 

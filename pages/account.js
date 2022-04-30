@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { useAuth } from '@/lib/auth'
 import Skeleton from 'react-loading-skeleton'
@@ -37,9 +37,9 @@ const AccountPage = () => {
 
   useEffect(() => {
     if (!loading && !user) {
-        router.push('/');
+        router.push('/')
     }
-  }, [user, loading]);
+  }, [user, loading])
 
   return (
     <>

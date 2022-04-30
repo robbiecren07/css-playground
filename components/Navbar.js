@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import { useAuth } from "@/lib/auth"
 import {
   useColorMode, useColorModeValue, Button, Link, Flex, Text, Popover,
-  PopoverTrigger, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverFooter
+  PopoverTrigger, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, Progress
 } from "@chakra-ui/react"
 import { SunIcon, MoonIcon } from '@chakra-ui/icons'
 import { GitHubIcon, GoogleIcon } from '@/styles/theme';
@@ -77,6 +77,7 @@ const LoginIcon = () => {
         </Button>
       </PopoverTrigger>
       <PopoverContent boxShadow={colorMode === 'light' ? 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;' : ''}>
+        <PopoverArrow />
         <PopoverHeader pt="20px" pb="0" fontSize="3xl" fontWeight="bold" border="0" textAlign="center">
           Hey!
         </PopoverHeader>
@@ -149,6 +150,7 @@ const Navbar = () => {
           </div>
 
         </nav>
+        {/* <Progress size="xs" bg="linear-gradient(to right, #9061f9, #e74694);" /> */}
       </header>
     </>
   )

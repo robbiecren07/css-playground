@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 // import FlexSidebarNav from './flex-sidebarnav'
-import FlexSidebarContext from "context/flexSidebarContext"
+import FlexSidebarContext from 'context/flexSidebarContext'
 import FlexSidebarContainer from './FlexSidebarContainer'
 import FlexSidebarItems from './FlexSidebarItems'
 import styles from '../../styles/Flex.module.scss'

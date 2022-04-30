@@ -1,9 +1,8 @@
-//import { useState } from 'react';
-import { NextSeo } from 'next-seo';
-import OpenGraph from '@/components/OpenGraph';
-import { FlexSidebarContextProvider } from 'context/flexSidebarContext';
-import FlexSidebar from '@/components/flex/FlexSidebar';
-import FlexContainer from '@/components/flex/FlexContainer';
+import { NextSeo } from 'next-seo'
+import OpenGraph from '@/components/OpenGraph'
+import { FlexSidebarContextProvider } from 'context/flexSidebarContext'
+import FlexSidebar from '@/components/flex/FlexSidebar'
+import FlexContainer from '@/components/flex/FlexContainer'
 
 import styles from '../styles/Flex.module.scss'
 

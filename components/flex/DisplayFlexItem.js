@@ -1,8 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import FlexSidebarContext from "context/flexSidebarContext";
-import { Text } from "@chakra-ui/react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCanXmark } from '@fortawesome/pro-solid-svg-icons'
+import { useContext } from 'react'
+import FlexSidebarContext from 'context/flexSidebarContext'
+import { Text } from '@chakra-ui/react'
+import { TrashCanIcon } from '@/styles/theme'
 
 import styles from '../../styles/Flex.module.scss'
 
@@ -32,7 +31,7 @@ const DisplayFlexItem = () => {
       </div>
     
       <button className={styles.trash} onClick={() => remove(item.key)}>
-        <FontAwesomeIcon icon={faTrashCanXmark} />
+        <TrashCanIcon w="16px" h="16px" fill="#A3A3A3" /> 
       </button>
     </div>
   ))

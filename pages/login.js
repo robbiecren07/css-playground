@@ -1,12 +1,10 @@
-import Layout from '@/components/Layout';
-import { useAuth } from '@/lib/auth';
-import OpenGraph from '@/components/OpenGraph';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons'
+import Layout from '@/components/Layout'
+import { useAuth } from '@/lib/auth'
+import OpenGraph from '@/components/OpenGraph'
+import { GitHubIcon, GoogleIcon } from '@/styles/theme'
+import { Button, useColorModeValue } from '@chakra-ui/react'
 
 import styles from '../styles/Dashboard.module.scss'
-import { GitHubIcon, GoogleIcon } from '@/styles/theme';
-import { Button, useColorModeValue } from '@chakra-ui/react';
 
 export default function Login() {
 
