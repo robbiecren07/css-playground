@@ -17,7 +17,7 @@ const FlexSidebarContainer = ({ }) => {
     <>
       <p className={styles.warning}>Edit properties of the flex container here. Click an item to the right to edit its properties.</p>
       <Button
-        variant="solid"
+        variant="solid-blue"
         w="100%" 
         h="48px"
         fontSize="18px"

@@ -32,7 +32,7 @@ export default function Home() {
 
             <Box w="100%" maxW="400px" mb="20px">
               <Link href="/flex-playground" passHref>
-                <Button size="xl" variant="solid" target="_self" title="Flex Playground">
+                <Button size="xl" variant="solid-blue" target="_self" title="Flex Playground">
                   Flex Playground
                 </Button>
               </Link>
@@ -40,7 +40,7 @@ export default function Home() {
 
             <Box w="100%" maxW="400px">
               <Link href="/grid-playground" passHref>
-                <Button size="xl" variant="solid" target="_self" title="Grid Playground">
+                <Button size="xl" variant="solid-blue" target="_self" title="Grid Playground">
                   Grid Playground
                 </Button>
               </Link>

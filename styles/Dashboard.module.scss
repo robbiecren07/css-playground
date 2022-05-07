@@ -1,22 +1,46 @@
-.main {
+.container {
   width: 100%;
   height: 100%;
-  
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  @media (min-width: 1024px) {
+    flex-direction: row;
   }
+}  
 
-  .dashboard_body {
-    margin-top: 40px;
-    @media (min-width: 1024px) {
-      margin-top: 60px;
-    }
+.left_sidebar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid;
+  @media (min-width: 1024px) {
+    max-width: 260px;
+    border-right: 1px solid;
+    border-bottom: 0;
+  }
+  @media (min-width: 1366px) {
+    max-width: 340px;
   }
 }
+
+.right_content {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.dashboard_body {
+  margin-top: 40px;
+  @media (min-width: 1024px) {
+    margin-top: 60px;
+  }
+}
+
 
 .auth_wrap {
   display: flex;

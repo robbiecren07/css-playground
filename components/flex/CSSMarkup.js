@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react'
-import FlexSidebarContext from "context/flexSidebarContext"
+import FlexSidebarContext from 'context/flexSidebarContext'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneDark, atomOneLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
-import { CopyToClipboard } from "react-copy-to-clipboard"
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useColorModeValue, Box } from '@chakra-ui/react'
 import { CopyIcon, CheckIcon } from '@chakra-ui/icons'
 
 const CSSMarkup = () => {
 
-  const [isCopied, setIsCopied] = useState(false);
+  const [isCopied, setIsCopied] = useState(false)
   const codeBG = useColorModeValue(atomOneLight, atomOneDark)
   
   const flexCtx = useContext(FlexSidebarContext)

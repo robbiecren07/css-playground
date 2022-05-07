@@ -3,8 +3,9 @@ import { useState, useContext, useEffect } from 'react'
 import FlexSidebarContext from 'context/flexSidebarContext'
 import FlexSidebarContainer from './FlexSidebarContainer'
 import FlexSidebarItems from './FlexSidebarItems'
-import styles from '../../styles/Flex.module.scss'
 import { Box, Button, ButtonGroup, useColorModeValue } from '@chakra-ui/react'
+
+import styles from '../../styles/Flex.module.scss'
 
 const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
 
@@ -47,7 +48,7 @@ const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
   }
 
   return (
-    <Box as="aside" borderColor={brColor} className={styles.left_sidebar}>
+    <Box as="aside" className={styles.left_sidebar} borderColor={brColor}>
 
       <ButtonGroup className={styles.sidebar_nav} spacing="1" size="md" colorScheme='blue' variant='ghost' bg={bg}>
         <Button className={showContainer ? `${cx(styles.active, 'active')}` : ''} onClick={containerDisplay} w="100%">

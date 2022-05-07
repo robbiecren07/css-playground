@@ -15,14 +15,14 @@ const FlexContainer = () => {
   return (
     <>
       {showMarkUp === false && 
-        <Box as="section" bg={bg} className={styles.right_content}
+        <Box as="section" className={styles.right_content} bg={bg}
           style={{ flexDirection: flexCtx.FD_value, flexWrap: flexCtx.FW_value, justifyContent: flexCtx.JC_value, alignItems: flexCtx.AI_value, alignContent: flexCtx.AC_value }}>
           <DisplayFlexItem />
         </Box>
       }
       
       {showMarkUp === true &&
-        <Box as="section" bg={bg} className={styles.right_content}>
+        <Box as="section" className={styles.right_content} bg={bg}>
           <FlexMarkup />
         </Box>
       }

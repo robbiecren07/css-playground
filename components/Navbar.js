@@ -4,8 +4,8 @@ import Image from "./Image"
 import { useRouter } from "next/router"
 import { useAuth } from "@/lib/auth"
 import {
-  useColorMode, useColorModeValue, Button, Link, Flex, Text, Popover,
-  PopoverTrigger, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, Progress
+  useColorMode, useColorModeValue, Button, Link, Flex, Text, Popover, VStack, StackDivider, Portal, Menu, MenuButton, MenuItem,
+  PopoverTrigger, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, Progress, Box
 } from "@chakra-ui/react"
 import { SunIcon, MoonIcon } from '@chakra-ui/icons'
 import { GitHubIcon, GoogleIcon } from '@/styles/theme';
@@ -20,7 +20,7 @@ const DarkModeIcon = () => {
   
   if (colorMode === 'light') {
     return (
-      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
+      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7} ml="20px">
         <MoonIcon w={6} h={6} color="#080808" onClick={toggleColorMode} />
       </Button>
     )
@@ -28,55 +28,78 @@ const DarkModeIcon = () => {
 
   if (colorMode === 'dark') {
     return (
-      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
+      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7} ml="20px">
         <SunIcon w={6} h={6} color="#fff" onClick={toggleColorMode} />
       </Button>
     )
   }
 
   return (
-    <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
+    <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7} ml="20px">
       <MoonIcon w={6} h={6} color="#080808" />
     </Button>
   )
   
 }
 
-const LoginIcon = () => {
-  const { user } = useAuth()
-  const auth = useAuth()
+const UserIcon = ({ user }) => {
+
+  const { signout } = useAuth()
   const initialFocusRef = React.useRef()
   const color = useColorModeValue('#080808', '#fff')
-  const { colorMode, toggleColorMode } = useColorMode()
+  const boxColor = useColorModeValue('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', 'unset')
   
-  if (user) {
-    return (
-      <NextLink href="/account" passHref>
-        <a className={styles.avatar} title="View Account">
+  return (
+    <Popover placement="bottom" closeOnBlur={true}>
+      <PopoverTrigger>
+        <button className={styles.avatar}>
           {<Image
             src={user?.photoUrl}
             width="36"
             height="36"
             alt="account avatar"
           /> || <Skeleton circle={true} height={36} width={36} />}
-        </a>
-      </NextLink>
-    )
-  }
+        </button>
+      </PopoverTrigger>
+      <PopoverContent boxShadow={boxColor} w="160px">
+        <PopoverArrow />
+        <PopoverBody p="20px 0">
+          <VStack
+            spacing={0}
+            align='stretch'
+          >
+            <NextLink href="/dashboard" passHref>
+              <Link className={styles.menu_link}>Dashboard</Link>
+            </NextLink>
+            <NextLink href="/account" passHref>
+              <Link className={styles.menu_link}>Account</Link>
+            </NextLink>
+            <Link className={styles.menu_link} onClick={signout}>
+              Sign Out
+            </Link>
+          </VStack>
+        </PopoverBody>
+      </PopoverContent>
+    </Popover>
+  )
 
+}
+
+const LoginIcon = () => {
+
+  const auth = useAuth()
+  const initialFocusRef = React.useRef()
+  const color = useColorModeValue('#080808', '#fff')
+  const boxColor = useColorModeValue('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', 'unset')
+  
   return (
-    // <NextLink href="/login" passHref>
-    //   <Button href="/login" target="_self" title="Log in to Account" variant="menu-button">
-    //     Log In
-    //   </Button>
-    // </NextLink>
-    <Popover initialFocusRef={initialFocusRef} placement="bottom-start" closeOnBlur={false}>
+    <Popover initialFocusRef={initialFocusRef} placement="bottom-start" closeOnBlur={true}>
       <PopoverTrigger>
         <Button title="Log in to Account" variant="menu-button">
           Log In
         </Button>
       </PopoverTrigger>
-      <PopoverContent boxShadow={colorMode === 'light' ? 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;' : ''}>
+      <PopoverContent boxShadow={boxColor}>
         <PopoverArrow />
         <PopoverHeader pt="20px" pb="0" fontSize="3xl" fontWeight="bold" border="0" textAlign="center">
           Hey!
@@ -111,6 +134,7 @@ const LoginIcon = () => {
 
 const Navbar = () => {
 
+  const { user } = useAuth()
   const router = useRouter();
   const color = useColorModeValue('#080808', '#fff')
   
@@ -124,26 +148,26 @@ const Navbar = () => {
               <a className={styles.nav_logo}>
                 <Image
                   src={logoImg}
-                  width="100"
-                  height="51"
+                  width="70"
+                  height="36"
                   alt="A CSS Flexbox and Grid sandbox for learning and building in CSS."
                 />
                 <Text as="span" color={color}>Playground</Text>
               </a>
             </NextLink>
-            <Flex alignItems="center" gap="20px" pr="80px">
+            <Flex h="40px" alignItems="center" gap="20px" pr="80px">
               <NextLink href="/flex-playground" passHref>
                 <Link variant="menu-link" className={router.pathname == "/flex-playground" ? 'nav_link active' : 'nav_link'} target="_self">
                   Flex Playground
                 </Link>
               </NextLink>
               <NextLink href="/grid-playground" passHref>
-                <Link variant="menu-link" className={router.pathname == "/grid-playground" ? 'nav_link active' : 'nav_link'} target="_self" mr="2rem">
+                <Link variant="menu-link" className={router.pathname == "/grid-playground" ? 'nav_link active' : 'nav_link'} target="_self" mr="30px">
                   Grid Playground
                 </Link>
               </NextLink>
 
-              <LoginIcon />
+              {!user ? <LoginIcon /> : <UserIcon user={user} />}
               
               <DarkModeIcon />
             </Flex>

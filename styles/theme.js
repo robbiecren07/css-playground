@@ -178,10 +178,31 @@ const theme = extendTheme({
             bgGradient: 'linear-gradient(to bottom right, #7F3BF2, #357DF8)',
           }
         }),
-        solid: (props) => ({
+        // solid: (props) => ({
+        //   bgGradient: 'linear-gradient(to bottom right, #7F3BF2, #357DF8)',
+        //   borderRadius: '10px',
+        //   color: 'white',
+        //   _hover: {
+        //     bgGradient: 'linear-gradient(to bottom left, #7F3BF2, #357DF8)',
+        //   },
+        //   _active: {
+        //     bgGradient: 'linear-gradient(to bottom right, #7F3BF2, #357DF8)',
+        //   }
+        // }),
+        outline: {
+          border: '2px',
+        },
+        'solid-blue': (props) => ({
+          w: '100%',
+          h: '48px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
           bgGradient: 'linear-gradient(to bottom right, #7F3BF2, #357DF8)',
-          borderRadius: '10px',
           color: 'white',
+          fontWeight: '500',
+          p: '10px 20px',
+          borderRadius: '10px',
           _hover: {
             bgGradient: 'linear-gradient(to bottom left, #7F3BF2, #357DF8)',
           },
@@ -189,9 +210,6 @@ const theme = extendTheme({
             bgGradient: 'linear-gradient(to bottom right, #7F3BF2, #357DF8)',
           }
         }),
-        outline: {
-          border: '2px',
-        },
         'outline-blue': (props) => ({
           w: '100%',
           h: '48px',
