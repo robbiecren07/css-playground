@@ -4,10 +4,10 @@ import Image from "./Image"
 import { useRouter } from "next/router"
 import { useAuth } from "@/lib/auth"
 import {
-  useColorMode, useColorModeValue, Button, Link, Flex, Text, Popover, VStack, StackDivider, Portal, Menu, MenuButton, MenuItem,
+  useColorMode, useColorModeValue, Button, Link, Flex, Text, Popover, VStack, StackDivider, Portal, Menu, MenuButton, MenuItem, MenuList,
   PopoverTrigger, PopoverContent, PopoverHeader, PopoverCloseButton, PopoverBody, PopoverArrow, Progress, Box
 } from "@chakra-ui/react"
-import { SunIcon, MoonIcon } from '@chakra-ui/icons'
+import { SunIcon, MoonIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import { GitHubIcon, GoogleIcon } from '@/styles/theme';
 import Skeleton from 'react-loading-skeleton'
 import logoImg from '../public/css-playground-logo-100x50.png'
@@ -20,7 +20,7 @@ const DarkModeIcon = () => {
   
   if (colorMode === 'light') {
     return (
-      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7} ml="20px">
+      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
         <MoonIcon w={6} h={6} color="#080808" onClick={toggleColorMode} />
       </Button>
     )
@@ -28,14 +28,14 @@ const DarkModeIcon = () => {
 
   if (colorMode === 'dark') {
     return (
-      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7} ml="20px">
+      <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
         <SunIcon w={6} h={6} color="#fff" onClick={toggleColorMode} />
       </Button>
     )
   }
 
   return (
-    <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7} ml="20px">
+    <Button onClick={toggleColorMode} variant="dark-mode" w={7} h={7}>
       <MoonIcon w={6} h={6} color="#080808" />
     </Button>
   )
@@ -50,37 +50,64 @@ const UserIcon = ({ user }) => {
   const boxColor = useColorModeValue('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', 'unset')
   
   return (
-    <Popover placement="bottom" closeOnBlur={true}>
-      <PopoverTrigger>
-        <button className={styles.avatar}>
-          {<Image
-            src={user?.photoUrl}
-            width="36"
-            height="36"
-            alt="account avatar"
-          /> || <Skeleton circle={true} height={36} width={36} />}
-        </button>
-      </PopoverTrigger>
-      <PopoverContent boxShadow={boxColor} w="160px">
-        <PopoverArrow />
-        <PopoverBody p="20px 0">
-          <VStack
-            spacing={0}
-            align='stretch'
-          >
-            <NextLink href="/dashboard" passHref>
-              <Link className={styles.menu_link}>Dashboard</Link>
-            </NextLink>
-            <NextLink href="/account" passHref>
-              <Link className={styles.menu_link}>Account</Link>
-            </NextLink>
-            <Link className={styles.menu_link} onClick={signout}>
-              Sign Out
-            </Link>
-          </VStack>
-        </PopoverBody>
-      </PopoverContent>
-    </Popover>
+    <Menu>
+      <MenuButton as="button" className={styles.avatar}>
+        {<Image
+          src={user?.photoUrl}
+          width="36"
+          height="36"
+          alt="account avatar"
+        /> || <Skeleton circle={true} height={36} width={36} />}
+      </MenuButton>
+      <MenuList minW="160px" w="160px">
+        <MenuItem>
+          <NextLink href="/dashboard" passHref>
+            <a className={styles.menu_link}>Dashboard</a>
+          </NextLink>
+        </MenuItem>
+        <MenuItem>
+          <NextLink href="/account" passHref>
+            <a className={styles.menu_link}>Account</a>
+          </NextLink>
+        </MenuItem>
+        <MenuItem>
+          <a className={styles.menu_link} onClick={signout}>
+            Sign Out
+          </a>
+        </MenuItem>
+      </MenuList>
+    </Menu>
+    // <Popover placement="bottom" closeOnBlur={true}>
+    //   <PopoverTrigger>
+    //     <button className={styles.avatar}>
+    //       {<Image
+    //         src={user?.photoUrl}
+    //         width="36"
+    //         height="36"
+    //         alt="account avatar"
+    //       /> || <Skeleton circle={true} height={36} width={36} />}
+    //     </button>
+    //   </PopoverTrigger>
+    //   <PopoverContent boxShadow={boxColor} w="160px">
+    //     <PopoverArrow />
+    //     <PopoverBody p="20px 0">
+    //       <VStack
+    //         spacing={0}
+    //         align='stretch'
+    //       >
+    //         <NextLink href="/dashboard" passHref>
+    //           <Link className={styles.menu_link}>Dashboard</Link>
+    //         </NextLink>
+    //         <NextLink href="/account" passHref>
+    //           <Link className={styles.menu_link}>Account</Link>
+    //         </NextLink>
+    //         <Link className={styles.menu_link} onClick={signout}>
+    //           Sign Out
+    //         </Link>
+    //       </VStack>
+    //     </PopoverBody>
+    //   </PopoverContent>
+    // </Popover>
   )
 
 }
@@ -95,7 +122,7 @@ const LoginIcon = () => {
   return (
     <Popover initialFocusRef={initialFocusRef} placement="bottom-start" closeOnBlur={true}>
       <PopoverTrigger>
-        <Button title="Log in to Account" variant="menu-button">
+        <Button title="Log in to Account" variant="menu-button" ml="20px" mr="20px">
           Log In
         </Button>
       </PopoverTrigger>
@@ -109,7 +136,6 @@ const LoginIcon = () => {
           <Text as="p" mb="26px" textAlign="center">Use your email or another service to continue with CSS Playground.</Text>
           <div className={styles.auth_btn}>
             <Button onClick={(e) => auth.signinWithGitHub('/dashboard')} variant="outline-blue">
-              {/* <FontAwesomeIcon icon={faGithub} size="2x" /> */}
               <GitHubIcon w="30px" h="30px" mr="16px" fill={color} />
               Continue with GitHub
             </Button>
@@ -156,7 +182,41 @@ const Navbar = () => {
               </a>
             </NextLink>
             <Flex h="40px" alignItems="center" gap="20px" pr="80px">
-              <NextLink href="/flex-playground" passHref>
+              <Menu>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon />} p="0"
+                  bg="none" _hover={{ bg: "none", color: "blue.500" }} _focus={{ bg: "none", }} _active={{ bg: "none", color: "blue.500" }}
+                >
+                  Playgounds
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>
+                    <NextLink href="/flex-playground" passHref>
+                      CSS Flexbox
+                    </NextLink>
+                  </MenuItem>
+                  <MenuItem>
+                    <NextLink href="/grid-playground" passHref>
+                      CSS Grid Layout
+                    </NextLink>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+
+              <Menu>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon />} p="0"
+                  bg="none" _hover={{ bg: "none", color: "blue.500" }} _focus={{ bg: "none", }} _active={{ bg: "none", color: "blue.500" }}
+                >
+                  Tools
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>
+                    <NextLink href="/flex-playground" passHref>
+                      Color Converter
+                    </NextLink>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+              {/* <NextLink href="/flex-playground" passHref>
                 <Link variant="menu-link" className={router.pathname == "/flex-playground" ? 'nav_link active' : 'nav_link'} target="_self">
                   Flex Playground
                 </Link>
@@ -165,7 +225,7 @@ const Navbar = () => {
                 <Link variant="menu-link" className={router.pathname == "/grid-playground" ? 'nav_link active' : 'nav_link'} target="_self" mr="30px">
                   Grid Playground
                 </Link>
-              </NextLink>
+              </NextLink> */}
 
               {!user ? <LoginIcon /> : <UserIcon user={user} />}
               

@@ -5,10 +5,9 @@ import FlexSidebarContainer from './FlexSidebarContainer'
 import FlexSidebarItems from './FlexSidebarItems'
 import { Box, Button, ButtonGroup, useColorModeValue } from '@chakra-ui/react'
 
-import styles from '../../styles/Flex.module.scss'
+import styles from '@/styles/Flex.module.scss'
 
 const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
-
   const [showContainer, setContainer] = useState(true)
   const [showItems, setItems] = useState(false)
   const [markUpText, setMarkUpText] = useState(false)
@@ -76,6 +75,7 @@ const FlexSidebar = ({ onClick, addFlexItem, selectedItem }) => {
           {markUpText ? 'View Flex Items' : 'View Markup'}
         </Button>
       </ButtonGroup>
+
     </Box>
   )
 

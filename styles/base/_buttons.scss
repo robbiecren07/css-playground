@@ -136,3 +136,10 @@
 //     box-shadow: 0 0 0 1px var(--c-blue);
 //   }
 // }
+
+.chakra-button__icon {
+  margin-inline-start: 0.25rem !important;
+}
+.chakra-menu__menu-button > span {
+  display: flex;
+}
