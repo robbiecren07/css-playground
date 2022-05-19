@@ -4,16 +4,15 @@ import FlexSidebarContext from 'context/flexSidebarContext'
 import { Box, Input, Link, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import FlexSidebarTooltip from './FlexSidebarTooltip'
-import { asOptions} from '@/utils/select-options'
+import { asOptions } from '@/utils/select-options'
 
 import styles from '../../styles/Flex.module.scss'
 
-const FlexSidebarItems = ({ }) => {
- 
+const FlexSidebarItems = ({}) => {
   const flexCtx = useContext(FlexSidebarContext)
   const addFlexItem = flexCtx.Flex_items.length
   const myItems = flexCtx.Flex_items
-  const findSelectedItem = myItems.find(item => item.selected === true)
+  const findSelectedItem = myItems.find((item) => item.selected === true)
   const theSelectedItem = new Array(findSelectedItem)
 
   const handleFGChange = (value, key) => flexCtx.fetchFGValue(value, key)
@@ -39,24 +38,19 @@ const FlexSidebarItems = ({ }) => {
   }
 
   if (addFlexItem === 0) {
-    return (
-      <p className={styles.warning}>Add an item from the Container tab first.</p>
-    )
+    return <p className={styles.warning}>Add an item from the Container tab first.</p>
   }
 
   if (findSelectedItem === undefined) {
-    return (
-      <p className={styles.warning}>Click on a flex item in the container on the right to edit its styles.</p>
-    )
+    return <p className={styles.warning}>Click on a flex item in the container on the right to edit its styles.</p>
   }
 
   if (findSelectedItem !== undefined) {
-    return theSelectedItem.map(item => (
+    return theSelectedItem.map((item) => (
       <Box as="div" key={item.key}>
         <p className={styles.warning}>Edit properties of the flex items here. The selected item will have a green border. Click the selected item again to stop editing it.</p>
 
         <form className={styles.form}>
-          
           {/* flex-grow */}
           <div className={styles.form_item}>
             <div className={styles.form_label_wrap}>
@@ -66,7 +60,7 @@ const FlexSidebarItems = ({ }) => {
                 <ExternalLinkIcon mx="2px" />
               </Link>
             </div>
-            
+
             <div className={styles.form_item_wrap}>
               <NumberInput
                 type="number"
@@ -99,7 +93,7 @@ const FlexSidebarItems = ({ }) => {
                 <ExternalLinkIcon mx="2px" />
               </Link>
             </div>
-            
+
             <div className={styles.form_item_wrap}>
               <NumberInput
                 type="number"
@@ -132,7 +126,7 @@ const FlexSidebarItems = ({ }) => {
                 <ExternalLinkIcon mx="2px" />
               </Link>
             </div>
-            
+
             <div className={styles.form_item_wrap}>
               <Input
                 type="text"
@@ -158,20 +152,14 @@ const FlexSidebarItems = ({ }) => {
                 <ExternalLinkIcon mx="2px" />
               </Link>
             </div>
-            
-            <Select
-              name="align-self"
-              size="lg"
-              fontSize="1rem"
-              h="40px"
-              mt="4px"
-              defaultValue={item.AS_value}
-              onChange={(e) => changeAS(e.target.value, item.key)}
-            >
-            {asOptions.map((option, index) => (
-              <option key={index} value={option.value}>{option.label}</option>
-            ))}
-          </Select>
+
+            <Select name="align-self" size="lg" fontSize="1rem" h="40px" mt="4px" defaultValue={item.AS_value} onChange={(e) => changeAS(e.target.value, item.key)}>
+              {asOptions.map((option, index) => (
+                <option key={index} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </Select>
           </div>
 
           {/* order */}
@@ -183,7 +171,7 @@ const FlexSidebarItems = ({ }) => {
                 <ExternalLinkIcon mx="2px" />
               </Link>
             </div>
-            
+
             <div className={styles.form_item_wrap}>
               <NumberInput
                 type="number"
@@ -206,12 +194,10 @@ const FlexSidebarItems = ({ }) => {
               </NumberInput>
             </div>
           </div>
-
         </form>
       </Box>
     ))
   }
-
 }
 
 export default FlexSidebarItems

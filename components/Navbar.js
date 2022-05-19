@@ -117,7 +117,7 @@ const LoginIcon = () => {
   const auth = useAuth()
   const initialFocusRef = React.useRef()
   const color = useColorModeValue('#080808', '#fff')
-  const boxColor = useColorModeValue('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', 'unset')
+  const boxColor = useColorModeValue('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', 'var(--chakra-shadows-dark-lg)')
   
   return (
     <Popover initialFocusRef={initialFocusRef} placement="bottom-start" closeOnBlur={true}>
@@ -163,6 +163,8 @@ const Navbar = () => {
   const { user } = useAuth()
   const router = useRouter();
   const color = useColorModeValue('#080808', '#fff')
+  const fontWeight = useColorModeValue('500', '400')
+  const boxColor = useColorModeValue('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', 'var(--chakra-shadows-dark-lg)')
   
   return (
     <>
@@ -184,36 +186,36 @@ const Navbar = () => {
             <Flex h="40px" alignItems="center" gap="20px" pr="80px">
               <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon />} p="0"
-                  bg="none" _hover={{ bg: "none", color: "blue.500" }} _focus={{ bg: "none", }} _active={{ bg: "none", color: "blue.500" }}
+                  bg="none" fontWeight={fontWeight} _hover={{ bg: "none", color: "blue.500" }} _focus={{ bg: "none", }} _active={{ bg: "none", color: "blue.500" }}
                 >
                   Playgounds
                 </MenuButton>
-                <MenuList>
-                  <MenuItem>
-                    <NextLink href="/flex-playground" passHref>
+                <MenuList boxShadow={boxColor}>
+                  <NextLink href="/flex-playground" passHref>
+                    <MenuItem as="a" fontSize="14px">
                       CSS Flexbox
-                    </NextLink>
-                  </MenuItem>
-                  <MenuItem>
-                    <NextLink href="/grid-playground" passHref>
+                    </MenuItem>
+                  </NextLink>
+                  <NextLink href="/grid-playground" passHref>
+                    <MenuItem as="a" fontSize="14px">
                       CSS Grid Layout
-                    </NextLink>
-                  </MenuItem>
+                    </MenuItem>
+                  </NextLink>
                 </MenuList>
               </Menu>
 
               <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon />} p="0"
-                  bg="none" _hover={{ bg: "none", color: "blue.500" }} _focus={{ bg: "none", }} _active={{ bg: "none", color: "blue.500" }}
+                  bg="none" fontWeight={fontWeight} _hover={{ bg: "none", color: "blue.500" }} _focus={{ bg: "none", }} _active={{ bg: "none", color: "blue.500" }}
                 >
                   Tools
                 </MenuButton>
-                <MenuList>
-                  <MenuItem>
-                    <NextLink href="/flex-playground" passHref>
+                <MenuList boxShadow={boxColor}>
+                  <NextLink href="/tools/color-converter" passHref>
+                    <MenuItem as="a" fontSize="14px">
                       Color Converter
-                    </NextLink>
-                  </MenuItem>
+                    </MenuItem>
+                  </NextLink>
                 </MenuList>
               </Menu>
               {/* <NextLink href="/flex-playground" passHref>

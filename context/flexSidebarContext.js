@@ -13,85 +13,108 @@ const FlexSidebarContext = createContext({
   fetchACValue: function (value) {},
 
   Flex_items: [],
-  addFlexItems: function () { },
-  removeFlexItem: function (value) { },
-  fetchEditItem: function (value) { },
-  doClearItems: function () { },
-  
+  addFlexItems: function () {},
+  removeFlexItem: function (value) {},
+  fetchEditItem: function (value) {},
+  doClearItems: function () {},
+
   selectedItemValue: false,
   fetchSelectedItem: function () {},
 
-  fetchFGValue: function (value, key) { },
-  fetchFSValue: function (value, key) { },
-  fetchFBValue: function (value, key) { },
-  fetchASValue: function (value, key) { },
-  fetchORValue: function (value, key) { },
+  fetchFGValue: function (value, key) {},
+  fetchFSValue: function (value, key) {},
+  fetchFBValue: function (value, key) {},
+  fetchASValue: function (value, key) {},
+  fetchORValue: function (value, key) {},
 
   markUpValue: false,
-  fetchMarkup: function () { },
+  fetchMarkup: function () {},
 })
 
 export const FlexSidebarContextProvider = ({ children }) => {
-  {/* sidebar container states */ }
+  {
+    /* sidebar container states */
+  }
   const [isFDValue, setFDValue] = useState('row')
   const [isFWValue, setFWValue] = useState('nowrap')
   const [isJCValue, setJCValue] = useState('flex-start')
   const [isAIValue, setAIValue] = useState('flex-start')
   const [isACValue, setACValue] = useState('flex-start')
 
-  const setFDValues = (value) => { setFDValue(value) }
-  const setFWValues = (value) => { setFWValue(value) }
-  const setJCValues = (value) => { setJCValue(value) }
-  const setAIValues = (value) => { setAIValue(value) }
-  const setACValues = (value) => { setACValue(value) }
+  const setFDValues = (value) => {
+    setFDValue(value)
+  }
+  const setFWValues = (value) => {
+    setFWValue(value)
+  }
+  const setJCValues = (value) => {
+    setJCValue(value)
+  }
+  const setAIValues = (value) => {
+    setAIValue(value)
+  }
+  const setACValues = (value) => {
+    setACValue(value)
+  }
 
   const [showMarkUp, setMarkUp] = useState(false)
 
   const markUp = () => {
     setMarkUp(!showMarkUp)
   }
-  
-  {/* add flex items */ }
+
+  {
+    /* add flex items */
+  }
   const [items, setItems] = useState([])
 
   const randomKey = () => {
-    return '_' + Math.random().toString(36).substring(2, 9);
+    return '_' + Math.random().toString(36).substring(2, 9)
   }
 
   const addItem = () => {
-    setItems((items) => [...items, {
-      id: items.length,
-      value: items.length + 1,
-      key: randomKey(),
-      selected: false,
-      FG_value: 0,
-      FS_value: 0,
-      FB_value: 'auto',
-      AS_value: 'auto',
-      OR_value: 0,
-    }])
+    setItems((items) => [
+      ...items,
+      {
+        id: items.length,
+        value: items.length + 1,
+        key: randomKey(),
+        selected: false,
+        FG_value: 0,
+        FS_value: 0,
+        FB_value: 'auto',
+        AS_value: 'auto',
+        OR_value: 0,
+      },
+    ])
   }
 
   const removeItem = (value) => {
-    const newItemCount = items.filter(item => item.key !== value)
+    const newItemCount = items.filter((item) => item.key !== value)
     setItems(newItemCount)
   }
 
-  {/* select/edit flex item */ }
+  {
+    /* select/edit flex item */
+  }
   const editItem = (value) => {
-    const updatedItems = items.map((item) => item.key === value ? {
-      ...item,
-      selected: !item.selected
-    } : {
-      ...item,
-      selected: false
-    })
+    const updatedItems = items.map((item) =>
+      item.key === value
+        ? {
+            ...item,
+            selected: !item.selected,
+          }
+        : {
+            ...item,
+            selected: false,
+          }
+    )
     setItems(updatedItems)
   }
 
   const clearItems = () => {
     const copyItems = [...items]
-    const setDefaults = copyItems.map(item => ({
+    const setDefaults = copyItems.map((item) => ({
       ...item,
       selected: false,
       FG_value: 0,
@@ -109,42 +132,62 @@ export const FlexSidebarContextProvider = ({ children }) => {
   }
 
   const editFGValue = (value, key) => {
-    const FGValue = items.map((item) => item.key === key ? {
-      ...item,
-      FG_value: value
-    } : item)
+    const FGValue = items.map((item) =>
+      item.key === key
+        ? {
+            ...item,
+            FG_value: value,
+          }
+        : item
+    )
     setItems(FGValue)
   }
 
   const editFSValue = (value, key) => {
-    const FSValue = items.map((item) => item.key === key ? {
-      ...item,
-      FS_value: value
-    } : item)
+    const FSValue = items.map((item) =>
+      item.key === key
+        ? {
+            ...item,
+            FS_value: value,
+          }
+        : item
+    )
     setItems(FSValue)
   }
 
   const editFBValue = (value, key) => {
-    const FBValue = items.map((item) => item.key === key ? {
-      ...item,
-      FB_value: value
-    } : item)
+    const FBValue = items.map((item) =>
+      item.key === key
+        ? {
+            ...item,
+            FB_value: value,
+          }
+        : item
+    )
     setItems(FBValue)
   }
 
   const editASValue = (value, key) => {
-    const ASValue = items.map((item) => item.key === key ? {
-      ...item,
-      AS_value: value
-    } : item)
+    const ASValue = items.map((item) =>
+      item.key === key
+        ? {
+            ...item,
+            AS_value: value,
+          }
+        : item
+    )
     setItems(ASValue)
   }
 
   const editORValue = (value, key) => {
-    const ORValue = items.map((item) => item.key === key ? {
-      ...item,
-      OR_value: value
-    } : item)
+    const ORValue = items.map((item) =>
+      item.key === key
+        ? {
+            ...item,
+            OR_value: value,
+          }
+        : item
+    )
     setItems(ORValue)
   }
 
@@ -176,11 +219,7 @@ export const FlexSidebarContextProvider = ({ children }) => {
     fetchMarkup: markUp,
   }
 
-  return (
-    <FlexSidebarContext.Provider value={context}>
-      {children}
-    </FlexSidebarContext.Provider>
-  )
+  return <FlexSidebarContext.Provider value={context}>{children}</FlexSidebarContext.Provider>
 }
 
 export default FlexSidebarContext
