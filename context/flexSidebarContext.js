@@ -32,9 +32,7 @@ const FlexSidebarContext = createContext({
 })
 
 export const FlexSidebarContextProvider = ({ children }) => {
-  {
-    /* sidebar container states */
-  }
+  // sidebar container values/states
   const [isFDValue, setFDValue] = useState('row')
   const [isFWValue, setFWValue] = useState('nowrap')
   const [isJCValue, setJCValue] = useState('flex-start')
@@ -57,15 +55,7 @@ export const FlexSidebarContextProvider = ({ children }) => {
     setACValue(value)
   }
 
-  const [showMarkUp, setMarkUp] = useState(false)
-
-  const markUp = () => {
-    setMarkUp(!showMarkUp)
-  }
-
-  {
-    /* add flex items */
-  }
+  // add flex items
   const [items, setItems] = useState([])
 
   const randomKey = () => {
@@ -89,14 +79,13 @@ export const FlexSidebarContextProvider = ({ children }) => {
     ])
   }
 
+  // delete flex item
   const removeItem = (value) => {
     const newItemCount = items.filter((item) => item.key !== value)
     setItems(newItemCount)
   }
 
-  {
-    /* select/edit flex item */
-  }
+  // select/edit flex item
   const editItem = (value) => {
     const updatedItems = items.map((item) =>
       item.key === value
@@ -112,6 +101,7 @@ export const FlexSidebarContextProvider = ({ children }) => {
     setItems(updatedItems)
   }
 
+  // clear input values
   const clearItems = () => {
     const copyItems = [...items]
     const setDefaults = copyItems.map((item) => ({
@@ -131,6 +121,7 @@ export const FlexSidebarContextProvider = ({ children }) => {
     setACValue('flex-start')
   }
 
+  // edit flex item values
   const editFGValue = (value, key) => {
     const FGValue = items.map((item) =>
       item.key === key
@@ -189,6 +180,13 @@ export const FlexSidebarContextProvider = ({ children }) => {
         : item
     )
     setItems(ORValue)
+  }
+
+  // Show Markup section
+  const [showMarkUp, setMarkUp] = useState(false)
+
+  const markUp = () => {
+    setMarkUp(!showMarkUp)
   }
 
   const context = {

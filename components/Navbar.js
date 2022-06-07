@@ -163,7 +163,7 @@ const LoginIcon = () => {
 const Navbar = () => {
 
   const { user } = useAuth()
-  const router = useRouter();
+  const router = useRouter()
   const color = useColorModeValue('#080808', '#fff')
   const fontWeight = useColorModeValue('500', '400')
   const boxColor = useColorModeValue('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;', 'var(--chakra-shadows-dark-lg)')
