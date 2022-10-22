@@ -59,7 +59,6 @@ const App = ({ Component, pageProps }) => {
     <>
       <AuthProvider>
         <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <title>CSS Playground</title>
           <meta name="description" content="A learning playground for CSS and all things web!" />
         </Head>
