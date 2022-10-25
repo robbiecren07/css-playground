@@ -2,8 +2,6 @@ import Link from 'next/link'
 import OpenGraph from '@/components/OpenGraph'
 import { Heading, Button, Container, Box } from '@chakra-ui/react'
 
-import styles from '../styles/Home.module.scss'
-
 export default function Home() {
 
   const title = 'CSS Playground | A web app for learning CSS'
@@ -39,11 +37,9 @@ export default function Home() {
             </Box>
 
             <Box w="100%" maxW="400px">
-              <Link href="/grid-playground" passHref>
-                <Button size="xl" variant="solid-blue" target="_self" title="Grid Playground">
-                  Grid Playground
-                </Button>
-              </Link>
+              <Button size="xl" variant="solid-blue" target="_self" title="Grid Playground" isDisabled>
+                Grid Playground
+              </Button>
             </Box>
 
           </Container>

@@ -198,11 +198,6 @@ const Navbar = () => {
                       CSS Flexbox
                     </MenuItem>
                   </NextLink>
-                  <NextLink href="/grid-playground" passHref>
-                    <MenuItem as="a" fontSize="14px">
-                      CSS Grid Layout
-                    </MenuItem>
-                  </NextLink>
                 </MenuList>
               </Menu>
 

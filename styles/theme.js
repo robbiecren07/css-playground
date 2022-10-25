@@ -204,6 +204,9 @@ const theme = extendTheme({
           borderRadius: '10px',
           _hover: {
             bgGradient: 'linear-gradient(to bottom left, #7F3BF2, #357DF8)',
+            _disabled: {
+              bgGradient: 'linear-gradient(to bottom right, #7F3BF2, #357DF8)',
+            },
           },
           _active: {
             bgGradient: 'linear-gradient(to bottom right, #7F3BF2, #357DF8)',
