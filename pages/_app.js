@@ -7,6 +7,7 @@ import Layout from '@/components/Layout'
 import { Progress } from '@/components/progress';
 
 import '../styles/globals.scss'
+import Script from 'next/script'
 
 // Code below is for joining 2 seperate styles like this: className={cx(styles.base, styles.btn)}
 // const cx = (...classNames) => classNames.join(' ');
@@ -60,6 +61,22 @@ const App = ({ Component, pageProps }) => {
 
       <ChakraProvider resetCSS theme={theme}>
         <Progress isAnimating={isAnimating} />
+        
+        {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+          `}
+        </Script>
+
         <Layout>
           {/* <DefaultSeo {...SEO} /> */}
           <Component {...pageProps} />
