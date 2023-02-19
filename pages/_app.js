@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { AuthProvider } from '@/lib/auth'
-import { DefaultSeo } from 'next-seo';
-import SEO from '../next-seo.config';
-import ErrorPage from 'next/error'
 import { ChakraProvider } from '@chakra-ui/provider'
 import theme from '@/styles/theme'
 import Layout from '@/components/Layout'
