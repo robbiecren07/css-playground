@@ -57,21 +57,18 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <>
-      <AuthProvider>
-        <Head>
-          <title>CSS Playground</title>
-          <meta name="description" content="A learning playground for CSS and all things web!" />
-        </Head>
+      <Head>
+        <title>CSS Playground</title>
+        <meta name="description" content="A learning playground for CSS and all things web!" />
+      </Head>
 
-        <ChakraProvider resetCSS theme={theme}>
-          <Progress isAnimating={isAnimating} />
-          <Layout>
-            {/* <DefaultSeo {...SEO} /> */}
-            <Component {...pageProps} />
-          </Layout>
-        </ChakraProvider>
-
-      </AuthProvider>
+      <ChakraProvider resetCSS theme={theme}>
+        <Progress isAnimating={isAnimating} />
+        <Layout>
+          {/* <DefaultSeo {...SEO} /> */}
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
     </>
   )
   
